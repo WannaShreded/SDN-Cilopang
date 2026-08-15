@@ -124,6 +124,13 @@ function sdn_cilopang_hide_unneeded_admin_pages()
 
 add_action('admin_menu', 'sdn_cilopang_hide_unneeded_admin_pages', 999);
 
+// Additionally remove Agenda admin menu for ALL users to fully disable the feature
+function sdn_cilopang_remove_agenda_menu()
+{
+    remove_menu_page('edit.php?post_type=agenda');
+}
+add_action('admin_menu', 'sdn_cilopang_remove_agenda_menu', 1);
+
 function sdn_cilopang_hide_dashboard_widgets()
 {
     if (current_user_can('manage_options')) {
@@ -156,18 +163,17 @@ function sdn_cilopang_dashboard_welcome_content()
 {
     $items = [
         ['Berita', admin_url('edit.php'), 'dashicons-admin-post'],
-        ['Agenda', admin_url('edit.php?post_type=agenda'), 'dashicons-calendar-alt'],
+        // Agenda intentionally removed from dashboard shortcuts - feature disabled
         ['Guru & Tendik', admin_url('edit.php?post_type=guru'), 'dashicons-id'],
         ['Fasilitas', admin_url('edit.php?post_type=fasilitas'), 'dashicons-building'],
         ['Ekstrakurikuler', admin_url('edit.php?post_type=ekstrakurikuler'), 'dashicons-groups'],
     ];
 
-    // Remove Berita & Agenda shortcuts for non-admin users
+    // Remove Berita shortcut for non-admin users
     if (!current_user_can('manage_options')) {
         $items = array_filter($items, function($it) {
-            return !in_array($it[0], ['Berita', 'Agenda'], true);
+            return $it[0] !== 'Berita';
         });
-        // Reindex
         $items = array_values($items);
     }
 
@@ -244,11 +250,7 @@ function sdn_cilopang_dashboard_welcome_content()
 }
 
 add_action('wp_dashboard_setup', function () {
-    if (current_user_can('manage_options')) {
-        add_meta_box('sdn_cilopang_dashboard_welcome', 'Website SDN Cilopang', 'sdn_cilopang_dashboard_welcome_content', 'dashboard', 'normal', 'high');
-    } else {
-        add_meta_box('sdn_cilopang_dashboard_welcome', 'Website SDN Cilopang', 'sdn_cilopang_dashboard_welcome_content', 'dashboard', 'normal', 'high');
-    }
+    add_meta_box('sdn_cilopang_dashboard_welcome', 'Website SDN Cilopang', 'sdn_cilopang_dashboard_welcome_content', 'dashboard', 'normal', 'high');
 }, 100);
 
 function sdn_cilopang_dashboard()
