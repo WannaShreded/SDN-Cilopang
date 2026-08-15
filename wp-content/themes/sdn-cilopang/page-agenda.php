@@ -23,7 +23,11 @@ get_header();
 
     <section class="section page-agenda-list">
         <div class="container">
-            <?php echo do_shortcode('[sdn_daftar_agenda]'); ?>
+            <?php if (apply_filters('sdn_cilopang_enable_agenda_shortcode', false)) : ?>
+                <?php echo do_shortcode('[sdn_daftar_agenda]'); ?>
+            <?php else : ?>
+                <p>Fitur Agenda dinonaktifkan. Informasi kegiatan tidak tersedia publik.</p>
+            <?php endif; ?>
         </div>
     </section>
 

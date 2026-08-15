@@ -74,9 +74,75 @@ function sdn_cilopang_agenda_metabox()
 
 add_action(
     'add_meta_boxes',
-    'sdn_cilopang_agenda_metabox'
+    'sdn_cilopang_agenda_metabox',
+    10
 );
 
+function sdn_cilopang_hide_agenda_metabox()
+{
+    remove_meta_box('sdn_agenda_data', 'agenda', 'normal');
+}
+
+add_action('add_meta_boxes', 'sdn_cilopang_hide_agenda_metabox', 999);
+
+function sdn_cilopang_agenda_title_placeholder($title)
+{
+    $screen = get_current_screen();
+    if (!$screen || $screen->post_type !== 'agenda') {
+        return $title;
+    }
+
+    return 'Judul Agenda';
+}
+
+add_filter('enter_title_here', 'sdn_cilopang_agenda_title_placeholder');
+
+function sdn_cilopang_agenda_featured_image_label($content)
+{
+    $screen = get_current_screen();
+    if (!$screen || $screen->post_type !== 'agenda') {
+        return $content;
+    }
+
+    $content = str_replace('Featured image', 'Poster Agenda', $content);
+    $content .= '<p class="description">Gunakan gambar yang jelas agar tampil baik pada halaman agenda.</p>';
+
+    return $content;
+}
+
+add_filter('admin_post_thumbnail_html', 'sdn_cilopang_agenda_featured_image_label');
+
+function sdn_cilopang_agenda_form_after_title()
+{
+    static $rendered = false;
+
+    if ($rendered) {
+        return;
+    }
+
+    $post_id = isset($_GET['post']) ? absint($_GET['post']) : 0;
+    if (!$post_id && !empty($GLOBALS['post'])) {
+        $post_id = (int) $GLOBALS['post']->ID;
+    }
+
+    if ($post_id) {
+        $post_type = get_post_type($post_id);
+    } else {
+        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+        $post_type = $screen ? $screen->post_type : '';
+    }
+
+    if ($post_type !== 'agenda') {
+        return;
+    }
+
+    $rendered = true;
+    $post = $post_id ? get_post($post_id) : (object) ['ID' => 0];
+    sdn_cilopang_agenda_metabox_html($post);
+}
+
+add_action('edit_form_after_title', 'sdn_cilopang_agenda_form_after_title', 10);
+add_action('edit_form_after_editor', 'sdn_cilopang_agenda_form_after_title', 10);
 
 /**
  * Tampilan Meta Box
@@ -108,49 +174,62 @@ function sdn_cilopang_agenda_metabox_html($post)
     );
     ?>
 
-    <p>
-        <label for="sdn_tanggal">
-            <strong>Tanggal Kegiatan</strong>
-        </label>
+    <div class="sdn-school-admin-shell">
+        <div class="sdn-school-admin-section">
+            <h3>Data Kegiatan</h3>
+            <div class="sdn-school-admin-field">
+                <span class="sdn-school-admin-help">Poster Agenda dapat dipilih melalui panel Gambar Unggulan di sebelah kanan.</span>
+            </div>
+            <div class="sdn-school-admin-field">
+                <label for="sdn_tanggal">Tanggal Kegiatan</label>
+                <input
+                    type="date"
+                    id="sdn_tanggal"
+                    name="sdn_tanggal"
+                    value="<?php echo esc_attr($tanggal); ?>"
+                    class="widefat"
+                >
+                <small>Tentukan tanggal pelaksanaan kegiatan.</small>
+            </div>
+        </div>
 
-        <input
-            type="date"
-            id="sdn_tanggal"
-            name="sdn_tanggal"
-            value="<?php echo esc_attr($tanggal); ?>"
-            class="widefat"
-        >
-    </p>
+        <div class="sdn-school-admin-section">
+            <h3>Informasi Kegiatan</h3>
+            <div class="sdn-school-admin-grid">
+                <div class="sdn-school-admin-field">
+                    <label for="sdn_waktu">Waktu Kegiatan</label>
+                    <input
+                        type="text"
+                        id="sdn_waktu"
+                        name="sdn_waktu"
+                        value="<?php echo esc_attr($waktu); ?>"
+                        class="widefat"
+                        placeholder="Contoh: 07.00 - 10.00 WIB"
+                    >
+                </div>
 
-    <p>
-        <label for="sdn_waktu">
-            <strong>Waktu</strong>
-        </label>
+                <div class="sdn-school-admin-field">
+                    <label for="sdn_lokasi">Lokasi Kegiatan</label>
+                    <input
+                        type="text"
+                        id="sdn_lokasi"
+                        name="sdn_lokasi"
+                        value="<?php echo esc_attr($lokasi); ?>"
+                        class="widefat"
+                        placeholder="Contoh: Halaman SDN Cilopang"
+                    >
+                </div>
+            </div>
+        </div>
 
-        <input
-            type="text"
-            id="sdn_waktu"
-            name="sdn_waktu"
-            value="<?php echo esc_attr($waktu); ?>"
-            class="widefat"
-            placeholder="Contoh: 07.00 - 10.00 WIB"
-        >
-    </p>
-
-    <p>
-        <label for="sdn_lokasi">
-            <strong>Lokasi</strong>
-        </label>
-
-        <input
-            type="text"
-            id="sdn_lokasi"
-            name="sdn_lokasi"
-            value="<?php echo esc_attr($lokasi); ?>"
-            class="widefat"
-            placeholder="Contoh: Halaman SDN Cilopang"
-        >
-    </p>
+        <div class="sdn-school-admin-section">
+            <h3>Deskripsi Kegiatan</h3>
+            <div class="sdn-school-admin-field">
+                <span class="sdn-school-admin-label">Editor Deskripsi</span>
+                <span class="sdn-school-admin-help">Tambahkan rincian kegiatan agar informasi mudah dipahami masyarakat sekolah.</span>
+            </div>
+        </div>
+    </div>
 
     <?php
 }
@@ -341,7 +420,11 @@ function sdn_cilopang_daftar_agenda()
     return ob_get_clean();
 }
 
-add_shortcode(
-    'sdn_daftar_agenda',
-    'sdn_cilopang_daftar_agenda'
-);
+// Agenda shortcode disabled by default for "static profile" mode.
+// To re-enable, add this in a mu-plugin or via a filter: add_filter('sdn_cilopang_enable_agenda_shortcode', '__return_true');
+if (apply_filters('sdn_cilopang_enable_agenda_shortcode', false)) {
+    add_shortcode(
+        'sdn_daftar_agenda',
+        'sdn_cilopang_daftar_agenda'
+    );
+}
