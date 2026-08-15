@@ -122,10 +122,23 @@ img {
     letter-spacing: 1px;
 }
 
-.hero h1 {
+.hero-title {
     margin: 0 0 20px;
-    font-size: clamp(42px, 6vw, 72px);
+    color: #ffffff;
     line-height: 1.05;
+    font-weight: 800;
+}
+
+.hero-title__main {
+    display: block;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+}
+
+.hero-title__sub {
+    display: block;
+    font-size: clamp(1.5rem, 2.5vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.15;
 }
 
 .hero p {
@@ -162,61 +175,8 @@ img {
 }
 
 .section-header {
-
-
-/* Contact page styles (moved from page-kontak.php) */
-.contact-page .contact-grid{
-    display:flex;
-    gap:32px;
-    align-items:flex-start;
-    flex-wrap:wrap;
-}
-.contact-page .contact-info{
-    flex:1 1 380px;
-    min-width:260px;
-}
-.contact-page .contact-map{
-    flex:1 1 380px;
-    min-width:260px;
-    max-width:640px;
-}
-.contact-page .contact-map-box{
-    background:#f8fafc;
-    border:1px solid #e5e7eb;
-    border-radius:12px;
-    padding:20px;
-    min-height:220px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-.contact-page .contact-map-box iframe{
-    width:100%;
-    height:320px;
-    border:0;
-    border-radius:10px;
-}
-.contact-page .contact-details p{
-    margin:8px 0;
-    color:#334155;
-}
-.contact-page .contact-details strong{
-    display:inline-block;
-    width:110px;
-}
-.contact-page .contact-cta{
-    margin-top:18px;
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-}
-
-@media (max-width:800px){
-    .contact-page .contact-grid{flex-direction:column}
-    .contact-page .contact-details strong{width:120px}
-}
     max-width: 650px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .section-label {
@@ -229,15 +189,79 @@ img {
 }
 
 .section-title {
-    margin: 0 0 12px;
+    margin: 0 0 10px;
     font-size: 38px;
     line-height: 1.2;
 }
 
 .section-description {
+    margin: 0;
     color: #6b7280;
 }
 
+/* Contact page styles (moved from page-kontak.php) */
+.contact-page .contact-grid {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.contact-page .contact-info {
+    flex: 1 1 380px;
+    min-width: 260px;
+}
+
+.contact-page .contact-map {
+    flex: 1 1 380px;
+    min-width: 260px;
+    max-width: 640px;
+}
+
+.contact-page .contact-map-box {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-page .contact-map-box iframe {
+    width: 100%;
+    height: 320px;
+    border: 0;
+    border-radius: 10px;
+}
+
+.contact-page .contact-details p {
+    margin: 8px 0;
+    color: #334155;
+}
+
+.contact-page .contact-details strong {
+    display: inline-block;
+    width: 110px;
+}
+
+.contact-page .contact-cta {
+    margin-top: 18px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 800px) {
+    .contact-page .contact-grid {
+        flex-direction: column;
+    }
+
+    .contact-page .contact-details strong {
+        width: 120px;
+    }
+}
 
 /* =========================================================
    NATIVE POST ARCHIVE & SINGLE TEMPLATE
@@ -261,6 +285,8 @@ img {
 .post-card {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    min-width: 0;
     overflow: hidden;
     border: 1px solid #e5e7eb;
     border-radius: 18px;
@@ -430,37 +456,80 @@ img {
 }
 
 /* =========================================================
+   HOMEPAGE NEWS SECTION
+   ========================================================= */
+
+.section-berita {
+    background: #f8fafc;
+}
+
+.section-berita .post-archive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.section-berita .post-card {
+    height: 100%;
+}
+
+@media (max-width: 900px) {
+    .section-berita .post-archive-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .post-archive-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .post-archive-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-berita .post-archive-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
    FOOTER
    ========================================================= */
 
 .site-footer {
-    padding: 50px 0;
+    padding: 28px 0 18px;
     background: #111827;
     color: #ffffff;
 }
 
 .site-footer .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 28px;
+    align-items: start;
 }
 
 .site-footer .footer-title {
     margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.05rem;
 }
 
 .site-footer .footer-bottom {
-    margin-top: 40px;
-    padding-top: 20px;
+    margin-top: 18px;
+    padding-top: 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     color: #9ca3af;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .site-footer .footer-column {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 10px;
 }
 
 .site-footer .footer-column--brand {
@@ -469,12 +538,51 @@ img {
 
 .site-footer .footer-contact-item {
     margin: 0;
-    line-height: 1.7;
+    line-height: 1.5;
 }
 
 .site-footer .footer-contact-item strong {
     font-weight: 600;
     color: #ffffff;
+}
+
+.site-footer .footer-social {
+    margin-top: 8px;
+}
+
+.site-footer .footer-social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.site-footer .footer-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.site-footer .footer-social-link:hover,
+.site-footer .footer-social-link:focus {
+    background: rgba(96, 165, 250, 0.18);
+    border-color: rgba(96, 165, 250, 0.5);
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+.site-footer .footer-social-link svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
 }
 
 .site-footer a {
@@ -533,6 +641,12 @@ img {
         margin-left: 0;
         border-top: 1px solid #e5e7eb;
         padding-top: 16px;
+        position: relative;
+        z-index: 20;
+    }
+
+    .site-footer {
+        padding: 24px 0 20px;
     }
 
     .main-navigation.is-open {
@@ -649,15 +763,136 @@ img {
 }
 
 /* =====================================================
+   THEME CSS VARIABLES & MICRO-INTERACTIONS
+   - Adds CSS custom properties based on existing theme colors
+   - Button hover, card hover, image zoom, and navbar underline
+==================================================== */
+:root {
+    --sdn-primary: #2563eb; /* existing primary */
+    --sdn-primary-700: #1d4ed8; /* existing darker primary */
+    --sdn-text: #1f2937;
+    --sdn-muted: #6b7280;
+    --sdn-border: #e5e7eb;
+    --sdn-surface: #f8fafc;
+    --sdn-transition: 200ms ease;
+    --sdn-radius: 8px;
+    --sdn-shadow: 0 1px 4px rgba(15,23,42,0.06);
+    --sdn-shadow-hover: 0 10px 24px rgba(15,23,42,0.12);
+}
+
+/* Buttons: subtle lift + shadow on hover, reuse .btn existing */
+.btn {
+    transition: transform var(--sdn-transition), box-shadow var(--sdn-transition), background-color var(--sdn-transition);
+    border-radius: var(--sdn-radius);
+}
+
+.btn-primary {
+    background: var(--sdn-primary);
+    color: #ffffff;
+    box-shadow: var(--sdn-shadow);
+}
+
+.btn-primary:hover,
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sdn-shadow-hover);
+    background: var(--sdn-primary-700);
+}
+
+/* Card hover: lift and stronger shadow; image zoom inside overflow-hidden wrapper */
+.post-card,
+.section-guru .sdn-guru-card,
+.section-fasilitas .sdn-fasilitas-card,
+.sdn-ekstrakurikuler-card {
+    transition: transform var(--sdn-transition), box-shadow var(--sdn-transition);
+    will-change: transform;
+    box-shadow: 0 1px 6px rgba(8,15,25,0.04);
+    border-radius: var(--sdn-radius);
+    overflow: hidden;
+}
+
+.post-card:hover,
+.section-guru .sdn-guru-card:hover,
+.section-fasilitas .sdn-fasilitas-card:hover,
+.sdn-ekstrakurikuler-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--sdn-shadow-hover);
+}
+
+/* Image zoom */
+.post-card, .sdn-guru-photo, .sdn-fasilitas-photo, .sdn-ekstrakurikuler-photo {
+    overflow: hidden;
+}
+
+.post-card-image,
+.section-guru .sdn-guru-photo img,
+.section-fasilitas .sdn-fasilitas-photo img,
+.sdn-ekstrakurikuler-photo img {
+    transition: transform var(--sdn-transition);
+    will-change: transform;
+}
+
+.post-card:hover .post-card-image,
+.section-guru .sdn-guru-card:hover .sdn-guru-photo img,
+.section-fasilitas .sdn-fasilitas-card:hover .sdn-fasilitas-photo img,
+.sdn-ekstrakurikuler-card:hover .sdn-ekstrakurikuler-photo img {
+    transform: scale(1.035);
+}
+
+/* Navbar underline hover animation (desktop only) */
+@media (min-width: 801px) {
+    .main-navigation li {
+        position: relative; /* ensure positioning for pseudo */
+    }
+
+    .main-navigation a::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        right: 50%;
+        bottom: -6px;
+        height: 2px;
+        background: var(--sdn-primary);
+        border-radius: 2px;
+        transition: left 160ms ease, right 160ms ease, opacity 160ms ease;
+        opacity: 0.0;
+        pointer-events: none;
+    }
+
+    .main-navigation a:hover::before,
+    .main-navigation a:focus::before {
+        left: 0;
+        right: 0;
+        opacity: 1.0;
+    }
+
+    /* Keep existing current-menu-item indicator intact (uses ::after). Hide hover underline when item is current to avoid double lines */
+    .main-navigation .current-menu-item > a::before,
+    .main-navigation .current_page_item > a::before {
+        opacity: 0;
+    }
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+    .btn,
+    .post-card,
+    .section-guru .sdn-guru-card,
+    .section-fasilitas .sdn-fasilitas-card,
+    .sdn-ekstrakurikuler-card,
+    .main-navigation a::before,
+    .post-card-image,
+    .sdn-guru-photo img,
+    .sdn-fasilitas-photo img,
+    .sdn-ekstrakurikuler-photo img {
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
+/* =====================================================
    HEADER FIX
 ===================================================== */
-
-.site-header {
-    background: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
-    position: relative;
-    z-index: 100;
-}
 
 .header-inner {
     min-height: 88px;
@@ -744,12 +979,6 @@ img {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
-}
-
-.site-header {
-    background: #ffffff;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
 .main-navigation {
@@ -959,14 +1188,27 @@ img {
 }
 
 
-.hero h1 {
+.hero-title {
     margin: 0 0 20px;
 
     color: #ffffff;
 
-    font-size: clamp(3rem, 6vw, 5rem);
     line-height: 1.05;
     font-weight: 800;
+}
+
+
+.hero-title__main {
+    display: block;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+}
+
+
+.hero-title__sub {
+    display: block;
+    font-size: clamp(1.5rem, 2.5vw, 2.6rem);
+    line-height: 1.15;
+    font-weight: 700;
 }
 
 
@@ -1005,18 +1247,100 @@ img {
 
 .section-guru .section-header {
     max-width: 760px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
+
+/* Center header intro for Guru archive */
+.section-guru .section-header {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Additional selectors for archive template variants */
+body.post-type-archive-guru .section-header,
+.guru-archive-page .section-header,
+.section-guru-hero .section-header {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* =====================================================
+   CENTER SECTION HEADERS (Scoped)
+   Target specific pages/archives so homepage/hero unaffected
+===================================================== */
+body.home .section-header,
+.home-page .section-header,
+body.page-profil-sekolah .section-header,
+.profil-page .section-header,
+body.page-kontak .section-header,
+.kontak-page .section-header,
+body.post-type-archive-guru .section-header,
+.guru-archive-page .section-header,
+body.post-type-archive-fasilitas .section-header,
+.fasilitas-archive-page .section-header,
+body.post-type-archive-ekstrakurikuler .section-header,
+.ekstrakurikuler-archive-page .section-header,
+body.post-type-archive-agenda .section-header,
+.agenda-archive-page .section-header,
+body.category .section-header,
+.post-archive-page .section-header {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Ensure label/title/description inside these headers are centered
+   and the description has a comfortable max-width */
+body.home .section-header .section-description,
+.home-page .section-header .section-description,
+body.page-profil-sekolah .section-header .section-description,
+.profil-page .section-header .section-description,
+body.page-kontak .section-header .section-description,
+.kontak-page .section-header .section-description,
+body.post-type-archive-guru .section-header .section-description,
+.guru-archive-page .section-header .section-description,
+body.post-type-archive-fasilitas .section-header .section-description,
+.fasilitas-archive-page .section-header .section-description,
+body.post-type-archive-ekstrakurikuler .section-header .section-description,
+.ekstrakurikuler-archive-page .section-header .section-description,
+body.post-type-archive-agenda .section-header .section-description,
+.agenda-archive-page .section-header .section-description,
+body.category .section-header .section-description,
+.post-archive-page .section-header .section-description {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Page-specific fallbacks (uses actual page IDs present in this site) */
+body.page-id-35 .section-header,
+body.page-id-49 .section-header {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+body.page-id-35 .section-header .section-description,
+body.page-id-49 .section-header .section-description {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 
 /* Grid */
 
 .section-guru .guru-list {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-
-    gap: 28px;
-
+    /* Use auto-fit so columns wrap to the number of cards available
+       and keep columns a comfortable, consistent width. */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+    justify-content: center;
+    gap: 18px;
     width: 100%;
 }
 
@@ -1026,45 +1350,48 @@ img {
 .section-guru .sdn-guru-card {
     display: flex;
     flex-direction: column;
-
+    align-items: stretch;
     width: 100%;
-
     background: #ffffff;
     border: 1px solid #e5e7eb;
-    border-radius: 16px;
-
+    border-radius: 12px;
     overflow: hidden;
-
     text-decoration: none;
     color: inherit;
-
-    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.06);
-
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
     transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
 }
 
 .section-guru .sdn-guru-card:hover {
     transform: translateY(-6px);
-
     border-color: #2563eb;
-
-    box-shadow:
-        0 16px 35px rgba(15, 23, 42, 0.12);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
 }
 
 .section-guru .sdn-guru-photo {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
+    background: #f8fafc;
+    padding: 12px;
 }
 
 .section-guru .sdn-guru-photo img {
-    transition: transform 0.4s ease;
+    max-height: 140px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.35s ease;
 }
 
 .section-guru .sdn-guru-card:hover .sdn-guru-photo img {
-    transform: scale(1.04);
+    transform: scale(1.03);
 }
 
 .section-guru .sdn-guru-card h3 {
@@ -1079,22 +1406,23 @@ img {
 /* Konten */
 
 .section-guru .sdn-guru-content {
-    padding: 24px;
+    padding: 14px 14px 16px;
     text-align: center;
 }
 
 .section-guru .sdn-guru-content h3 {
-    margin: 0 0 8px;
+    margin: 0 0 6px;
     color: #172033;
-    font-size: 1.2rem;
-    line-height: 1.4;
+    font-size: 1rem; /* ~16px */
+    font-weight: 700;
+    line-height: 1.3;
 }
 
 .section-guru .sdn-guru-content p {
-    margin: 6px 0;
+    margin: 4px 0;
     color: #64748b;
-    font-size: 0.95rem;
-    line-height: 1.5;
+    font-size: 0.875rem; /* ~14px */
+    line-height: 1.3;
 }
 
 .section-guru .sdn-guru-content strong {
@@ -1113,9 +1441,10 @@ img {
 /* Archive page grid fixes */
 .section-guru .sdn-guru-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 28px;
-    margin-top: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+    justify-content: center;
+    gap: 18px;
+    margin-top: 18px;
 }
 
 .section-guru .sdn-guru-card {
@@ -1157,15 +1486,26 @@ img {
    RESPONSIVE
 ===================================================== */
 
-@media (max-width: 900px) {
-
-.section-guru .guru-list,
-.section-guru .sdn-guru-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (max-width: 1200px) {
+    .section-guru .guru-list,
+    .section-guru .sdn-guru-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
-
 }
 
+@media (max-width: 1024px) {
+    .section-guru .guru-list,
+    .section-guru .sdn-guru-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .section-guru .guru-list,
+    .section-guru .sdn-guru-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
 
 @media (max-width: 600px) {
 
@@ -1177,7 +1517,8 @@ img {
         width: calc(100% - 30px);
     }
 
-    .section-guru .guru-list {
+    .section-guru .guru-list,
+    .section-guru .sdn-guru-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1208,7 +1549,7 @@ img {
 .section-agenda .sdn-agenda-list {
     display: grid;
     gap: 24px;
-    margin-top: 40px;
+    margin-top: 18px;
 }
 
 .section-agenda .sdn-agenda-card {
@@ -1312,6 +1653,42 @@ img {
     font-weight: 600;
 }
 
+/* Single guru: two-column profile layout (scoped) */
+.guru-detail-page .guru-detail {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    gap: 32px;
+    align-items: start;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.guru-detail-page .guru-detail-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-width: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #e2e8f0;
+    box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+}
+
+.guru-detail-page .guru-detail-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.guru-detail-page .guru-detail-content {
+    display: block;
+}
+
 
 /* Konten */
 
@@ -1385,9 +1762,15 @@ img {
 @media (max-width: 800px) {
 
     .guru-detail {
+        display: grid;
         grid-template-columns: 1fr;
 
         gap: 35px;
+        width: 100%;
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        box-sizing: border-box;
     }
 
     .guru-detail-photo {
@@ -1421,7 +1804,7 @@ img {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 28px;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 18px;
 }
 
 .section-fasilitas .sdn-fasilitas-card {
@@ -1564,13 +1947,352 @@ img {
     margin: 0 auto;
 }
 
+.comment-home-ekskul {
+/* Homepage: make the ekstrakurikuler block a grid while keeping header full-width
+   This scopes compact layout to the section only and avoids affecting other sections */
+}
+body.home .section-ekstrakurikuler > .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+    justify-content: center;
+    gap: 18px;
+    align-items: start;
+}
+
+.section-ekstrakurikuler > .container > .section-header {
+    grid-column: 1 / -1;
+}
+
+/* Fallback: if shortcode outputs .sdn-ekstrakurikuler-grid inside the section (homepage or elsewhere) */
+.ekstrakurikuler-archive-page .sdn-ekstrakurikuler-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+    justify-content: center;
+    gap: 18px;
+}
+
+/* Homepage: ensure ekstrakurikuler card group centers properly without shrinking cards
+   - Scoped to body.home to avoid affecting archive/single pages
+   - Use flex-wrap + justify-content:center so last row centers correctly
+ */
+body.home .section-ekstrakurikuler > .container > .sdn-ekstrakurikuler-grid,
+body.home .section-ekstrakurikuler .sdn-ekstrakurikuler-grid,
+body.home .section-ekstrakurikuler > .container > article,
+body.home .section-ekstrakurikuler > .container > .sdn-ekstrakurikuler-card {
+    /* parent grid -> flex container */
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 18px !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    /* If the parent container uses grid with multiple track columns,
+       force the sdN-ekskul grid to span all columns so flex centering applies
+       across full container width rather than a single grid cell. */
+}
+
+body.home .section-ekstrakurikuler > .container > .sdn-ekstrakurikuler-grid {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+}
+
+/* Ensure individual cards keep their compact width and appearance */
+body.home .section-ekstrakurikuler .sdn-ekstrakurikuler-card,
+body.home .section-ekstrakurikuler > .container > article {
+    flex: 0 0 auto !important;
+    width: 100%;
+    max-width: 220px;
+}
+
+/* Style homepage article outputs to match compact card look */
+.body-home-ekskul-article {
+/* homepage-only compact article/card appearance is applied below with body.home scope */
+}
+body.home .section-ekstrakurikuler > .container > article,
+body.home .section-ekstrakurikuler .sdn-ekstrakurikuler-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px;
+    gap: 8px;
+    width: 100%;
+    max-width: 220px;
+    box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   HOMEPAGE: Center other card groups (Ekstrakurikuler already handled above)
+   - Scope to the homepage/container to avoid changing archive templates
+   ========================================================= */
+
+/* Agenda: make homepage agenda list form a centered, content-sized grid */
+.section-agenda > .container {
+    /* Keep default block layout; homepage centering handled below (scoped to body.home) */
+}
+
+/* Berita (homepage): center post cards and allow content-sized rows */
+.section-berita > .container {
+    /* Keep default block layout; homepage centering handled below (scoped to body.home) */
+}
+
+/* =========================================================
+   HOMEPAGE: Center Agenda & Berita groups without shrinking cards
+   - Scoped to homepage (body.home) to avoid changing archive/single layouts
+   ========================================================= */
+
+/* Agenda: keep card width and stack; center group and single card */
+body.home .section-agenda > .container > .section-header {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.home .section-agenda > .container > .sdn-agenda-list,
+body.home .section-agenda .sdn-agenda-list {
+    /* preserve original stacked/list layout but center the group when narrower than container */
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 18px;
+    align-items: center; /* center single card horizontally */
+}
+
+body.home .section-agenda .sdn-agenda-card {
+    width: 100%;
+    max-width: 900px; /* keep card spacious for date/title/desc */
+    box-sizing: border-box;
+}
+
+/* Berita: center row of post cards while preserving their intrinsic width */
+body.home .section-berita > .container > .section-header {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.home .section-berita > .container > .post-archive-grid,
+body.home .section-berita .post-archive-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+}
+
+body.home .section-berita .post-card {
+    width: 100%;
+    max-width: 420px; /* preserve readable card width */
+    box-sizing: border-box;
+}
+
+
+.section-ekstrakurikuler > .container > article h3,
+.section-ekstrakurikuler .sdn-ekstrakurikuler-card h3 {
+    margin: 0 0 6px 0;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.section-ekstrakurikuler > .container > article .sdn-ekstrakurikuler-single-photo,
+.section-ekstrakurikuler > .container > article img,
+.section-ekstrakurikuler .sdn-ekstrakurikuler-photo img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+    .section-ekstrakurikuler > .container {
+        grid-template-columns: 1fr;
+    }
+    .section-ekstrakurikuler > .container > article {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+/* Compact Ekstrakurikuler cards (scope to archive only) */
+.ekstrakurikuler-archive-page .sdn-ekstrakurikuler-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+    justify-content: center;
+    gap: 18px;
+    width: 100%;
+}
+
+.ekstrakurikuler-archive-page .sdn-ekstrakurikuler-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.ekstrakurikuler-archive-page .sdn-ekstrakurikuler-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 12px;
+    gap: 8px;
+    box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.ekstrakurikuler-archive-page .sdn-ekstrakurikuler-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(15,23,42,0.08);
+}
+
+.ekstrakurikuler-archive-page .sdn-ekstrakurikuler-photo {
+    width: 100%;
+    height: 150px;
+    max-height: 150px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #f1f5f9;
+    display: block;
+}
+
+.ekstrakurikuler-archive-page .sdn-ekstrakurikuler-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.ekstrakurikuler-archive-page .sdn-ekstrakurikuler-no-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-weight: 600;
+    height: 100%;
+}
+
+.ekstrakurikuler-archive-page .sdn-ekstrakurikuler-content h3 {
+    margin: 0 0 6px 0;
+    font-size: 1rem; /* ~16px */
+    line-height: 1.2;
+    color: #0f172a;
+}
+
+.ekstrakurikuler-archive-page .sdn-ekstrakurikuler-content p {
+    margin: 3px 0;
+    font-size: 0.85rem; /* 13.6px */
+    color: #475569;
+    line-height: 1.35;
+}
+
+.ekstrakurikuler-archive-page .sdn-ekstrakurikuler-description {
+    margin-top: 6px;
+    color: #64748b;
+    font-size: 0.875rem;
+}
+
+/* Hide card descriptions on archive and homepage (cards only) */
+.section-ekstrakurikuler .sdn-ekstrakurikuler-description,
+.ekstrakurikuler-archive-page .sdn-ekstrakurikuler-description,
+.section-ekstrakurikuler > .container article .sdn-ekstrakurikuler-description,
+.section-ekstrakurikuler .sdn-ekstrakurikuler-card .sdn-ekstrakurikuler-description {
+    display: none;
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure single page description remains visible */
+.ekstrakurikuler-single-page .sdn-ekstrakurikuler-description {
+    display: block !important;
+    visibility: visible !important;
+    height: auto !important;
+    margin-top: 18px;
+    color: #64748b;
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+/* Single Ekstrakurikuler: two-column detail layout (scoped) */
+.ekstrakurikuler-single-page .section-ekstrakurikuler > .container {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    gap: 30px;
+    align-items: start;
+    width: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.ekstrakurikuler-single-page .sdn-ekstrakurikuler-single-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #f1f5f9;
+}
+
+.ekstrakurikuler-single-page .sdn-ekstrakurikuler-single-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.ekstrakurikuler-single-page .sdn-ekstrakurikuler-single-content {
+    display: block;
+}
+
+.ekstrakurikuler-single-page .sdn-ekstrakurikuler-meta p {
+    margin: 6px 0;
+    font-size: 0.95rem;
+    color: #475569;
+}
+
+.ekstrakurikuler-single-page .sdn-ekstrakurikuler-description {
+    margin-top: 18px;
+}
+
+@media (max-width: 768px) {
+    .ekstrakurikuler-single-page .section-ekstrakurikuler > .container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .ekstrakurikuler-single-page .sdn-ekstrakurikuler-single-photo {
+        height: auto;
+        aspect-ratio: auto;
+        max-height: 420px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .ekstrakurikuler-archive-page .sdn-ekstrakurikuler-photo {
+        height: 140px;
+        max-height: 140px;
+    }
+}
+
+@media (max-width: 600px) {
+    .ekstrakurikuler-archive-page .sdn-ekstrakurikuler-grid {
+        grid-template-columns: 1fr;
+    }
+    .ekstrakurikuler-archive-page .sdn-ekstrakurikuler-card {
+        padding: 12px;
+    }
+}
+
 /* Ensure facility grid responsiveness remains consistent */
 .section-fasilitas .sdn-fasilitas-grid {
     gap: 28px;
 }
 
-/* Guru placeholder: clean neutral block with simple avatar icon */
-.sdn-guru-no-photo {
+/* Guru placeholder: clean neutral block with simple avatar icon (archive-only) */
+.section-guru .sdn-guru-no-photo {
     background: #f1f5f9 !important;
     color: #475569 !important;
     font-weight: 600;
@@ -1581,7 +2303,7 @@ img {
     min-height: 260px;
 }
 
-.sdn-guru-no-photo::after {
+.section-guru .sdn-guru-no-photo::after {
     content: '';
     display: block;
     width: 72px;
@@ -1591,8 +2313,8 @@ img {
     background-repeat: no-repeat;
 }
 
-/* Make sure guru card titles wrap comfortably */
-.sdn-guru-content h3 {
+/* Make sure guru card titles wrap comfortably (archive-only) */
+.section-guru .sdn-guru-content h3 {
     word-break: break-word;
     line-height: 1.25;
 }
