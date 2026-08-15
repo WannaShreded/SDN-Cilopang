@@ -156,6 +156,18 @@ function sdn_cilopang_block_agenda_admin_access()
 }
 add_action('admin_init', 'sdn_cilopang_block_agenda_admin_access', 1);
 
+// Flush rewrite rules once in admin to ensure /agenda/ routes are removed
+add_action('admin_init', function () {
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+
+    if (!get_option('sdn_cilopang_agenda_rewrite_flushed')) {
+        flush_rewrite_rules();
+        update_option('sdn_cilopang_agenda_rewrite_flushed', 1);
+    }
+}, 20);
+
 function sdn_cilopang_hide_dashboard_widgets()
 {
     if (current_user_can('manage_options')) {
