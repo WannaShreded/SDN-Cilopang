@@ -48,101 +48,110 @@ function sdn_cilopang_register_agenda()
     register_post_type('agenda', $args);
 }
 
-add_action(
-    'init',
-    'sdn_cilopang_register_agenda'
-);
+// Agenda feature toggle: disabled by default for Fase 16B (do not register CPT unless explicitly enabled)
+$sdn_agenda_enabled = apply_filters('sdn_cilopang_enable_agenda_cpt', false);
 
-
-/**
- * =========================================================
- * META BOX AGENDA
- * =========================================================
- */
-
-function sdn_cilopang_agenda_metabox()
-{
-    add_meta_box(
-        'sdn_agenda_data',
-        'Informasi Agenda',
-        'sdn_cilopang_agenda_metabox_html',
-        'agenda',
-        'normal',
-        'high'
+if ($sdn_agenda_enabled) {
+    add_action(
+        'init',
+        'sdn_cilopang_register_agenda'
     );
-}
 
-add_action(
-    'add_meta_boxes',
-    'sdn_cilopang_agenda_metabox',
-    10
-);
 
-function sdn_cilopang_hide_agenda_metabox()
-{
-    remove_meta_box('sdn_agenda_data', 'agenda', 'normal');
-}
+    /**
+     * =========================================================
+     * META BOX AGENDA
+     * =========================================================
+     */
 
-add_action('add_meta_boxes', 'sdn_cilopang_hide_agenda_metabox', 999);
-
-function sdn_cilopang_agenda_title_placeholder($title)
-{
-    $screen = get_current_screen();
-    if (!$screen || $screen->post_type !== 'agenda') {
-        return $title;
+    function sdn_cilopang_agenda_metabox()
+    {
+        add_meta_box(
+            'sdn_agenda_data',
+            'Informasi Agenda',
+            'sdn_cilopang_agenda_metabox_html',
+            'agenda',
+            'normal',
+            'high'
+        );
     }
 
-    return 'Judul Agenda';
-}
+    add_action(
+        'add_meta_boxes',
+        'sdn_cilopang_agenda_metabox',
+        10
+    );
 
-add_filter('enter_title_here', 'sdn_cilopang_agenda_title_placeholder');
+    function sdn_cilopang_hide_agenda_metabox()
+    {
+        remove_meta_box('sdn_agenda_data', 'agenda', 'normal');
+    }
 
-function sdn_cilopang_agenda_featured_image_label($content)
-{
-    $screen = get_current_screen();
-    if (!$screen || $screen->post_type !== 'agenda') {
+    add_action('add_meta_boxes', 'sdn_cilopang_hide_agenda_metabox', 999);
+
+    function sdn_cilopang_agenda_title_placeholder($title)
+    {
+        $screen = get_current_screen();
+        if (!$screen || $screen->post_type !== 'agenda') {
+            return $title;
+        }
+
+        return 'Judul Agenda';
+    }
+
+    add_filter('enter_title_here', 'sdn_cilopang_agenda_title_placeholder');
+
+    function sdn_cilopang_agenda_featured_image_label($content)
+    {
+        $screen = get_current_screen();
+        if (!$screen || $screen->post_type !== 'agenda') {
+            return $content;
+        }
+
+        $content = str_replace('Featured image', 'Poster Agenda', $content);
+        $content .= '<p class="description">Gunakan gambar yang jelas agar tampil baik pada halaman agenda.</p>';
+
         return $content;
     }
 
-    $content = str_replace('Featured image', 'Poster Agenda', $content);
-    $content .= '<p class="description">Gunakan gambar yang jelas agar tampil baik pada halaman agenda.</p>';
+    add_filter('admin_post_thumbnail_html', 'sdn_cilopang_agenda_featured_image_label');
 
-    return $content;
+    function sdn_cilopang_agenda_form_after_title()
+    {
+        static $rendered = false;
+
+        if ($rendered) {
+            return;
+        }
+
+        $post_id = isset($_GET['post']) ? absint($_GET['post']) : 0;
+        if (!$post_id && !empty($GLOBALS['post'])) {
+            $post_id = (int) $GLOBALS['post']->ID;
+        }
+
+        if ($post_id) {
+            $post_type = get_post_type($post_id);
+        } else {
+            $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+            $post_type = $screen ? $screen->post_type : '';
+        }
+
+        if ($post_type !== 'agenda') {
+            return;
+        }
+
+        $rendered = true;
+        $post = $post_id ? get_post($post_id) : (object) ['ID' => 0];
+        sdn_cilopang_agenda_metabox_html($post);
+    }
+
+    add_action('edit_form_after_title', 'sdn_cilopang_agenda_form_after_title', 10);
+    add_action('edit_form_after_editor', 'sdn_cilopang_agenda_form_after_title', 10);
+} else {
+    // Agenda CPT is disabled: ensure no shortcode is registered and save hooks are not added.
+    // Shortcode registration is controlled by sdn_cilopang_enable_agenda_shortcode filter elsewhere.
 }
 
-add_filter('admin_post_thumbnail_html', 'sdn_cilopang_agenda_featured_image_label');
-
-function sdn_cilopang_agenda_form_after_title()
-{
-    static $rendered = false;
-
-    if ($rendered) {
-        return;
-    }
-
-    $post_id = isset($_GET['post']) ? absint($_GET['post']) : 0;
-    if (!$post_id && !empty($GLOBALS['post'])) {
-        $post_id = (int) $GLOBALS['post']->ID;
-    }
-
-    if ($post_id) {
-        $post_type = get_post_type($post_id);
-    } else {
-        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
-        $post_type = $screen ? $screen->post_type : '';
-    }
-
-    if ($post_type !== 'agenda') {
-        return;
-    }
-
-    $rendered = true;
-    $post = $post_id ? get_post($post_id) : (object) ['ID' => 0];
-    sdn_cilopang_agenda_metabox_html($post);
-}
-
-add_action('edit_form_after_title', 'sdn_cilopang_agenda_form_after_title', 10);
-add_action('edit_form_after_editor', 'sdn_cilopang_agenda_form_after_title', 10);
 
 /**
  * Tampilan Meta Box
@@ -297,10 +306,6 @@ function sdn_cilopang_simpan_agenda($post_id)
     }
 }
 
-add_action(
-    'save_post_agenda',
-    'sdn_cilopang_simpan_agenda'
-);
 
 
 /**
@@ -423,8 +428,4 @@ function sdn_cilopang_daftar_agenda()
 // Agenda shortcode disabled by default for "static profile" mode.
 // To re-enable, add this in a mu-plugin or via a filter: add_filter('sdn_cilopang_enable_agenda_shortcode', '__return_true');
 if (apply_filters('sdn_cilopang_enable_agenda_shortcode', false)) {
-    add_shortcode(
-        'sdn_daftar_agenda',
-        'sdn_cilopang_daftar_agenda'
-    );
 }
