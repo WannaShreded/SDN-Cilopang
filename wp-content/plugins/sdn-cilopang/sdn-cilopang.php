@@ -131,6 +131,31 @@ function sdn_cilopang_remove_agenda_menu()
 }
 add_action('admin_menu', 'sdn_cilopang_remove_agenda_menu', 1);
 
+// Block direct admin access to agenda screens (even via direct URL)
+function sdn_cilopang_block_agenda_admin_access()
+{
+    if (!is_admin()) {
+        return;
+    }
+
+    // If someone visits edit.php?post_type=agenda
+    if (isset($_GET['post_type']) && $_GET['post_type'] === 'agenda') {
+        wp_safe_redirect(admin_url());
+        exit;
+    }
+
+    // If someone visits post.php?post={id}&action=edit for an agenda post
+    if (isset($_GET['post']) && isset($_GET['action']) && $_GET['action'] === 'edit') {
+        $post_id = absint($_GET['post']);
+        $post = get_post($post_id);
+        if ($post && $post->post_type === 'agenda') {
+            wp_safe_redirect(admin_url());
+            exit;
+        }
+    }
+}
+add_action('admin_init', 'sdn_cilopang_block_agenda_admin_access', 1);
+
 function sdn_cilopang_hide_dashboard_widgets()
 {
     if (current_user_can('manage_options')) {
