@@ -1,5 +1,16 @@
 <?php
-$paths = ['/' => '/', '/kontak/' => '/kontak/', '/guru/' => '/guru/', '/agenda/' => '/agenda/', '/fasilitas/' => '/fasilitas/', '/ekstrakurikuler/' => '/ekstrakurikuler/', '/profil-sekolah/' => '/profil-sekolah/'];
+$paths = [
+    '/' => '/',
+    '/kontak/' => '/kontak/',
+    '/guru/' => '/guru/',
+    '/agenda/' => '/agenda/',
+    '/fasilitas/' => '/fasilitas/',
+    '/ekstrakurikuler/' => '/ekstrakurikuler/',
+    '/profil-sekolah/' => '/profil-sekolah/',
+    '/category/berita/' => '/category/berita/',
+    '/category/pengumuman/' => '/category/pengumuman/',
+    '/sman-1-majalaya-resmi-buka-mpls/' => '/sman-1-majalaya-resmi-buka-mpls/',
+];
 foreach ($paths as $label => $path) {
     $url = 'http://sdn-cilopang.test' . $path;
     $ctx = stream_context_create(['http' => ['ignore_errors' => true]]);

@@ -168,6 +168,82 @@ add_action('admin_init', function () {
     }
 }, 20);
 
+/**
+ * =========================================================
+ * DISABLE BERITA (native posts) PUBLIC & ADMIN FOR OPERATORS
+ * =========================================================
+ */
+
+// Block public view of single posts and category pages for berita/pengumuman
+function sdn_cilopang_block_berita_public()
+{
+    if (is_admin()) {
+        return;
+    }
+
+    // Single native post
+    if (is_singular('post')) {
+        global $wp_query;
+        $wp_query->set_404();
+        status_header(404);
+        nocache_headers();
+        include get_query_template('404');
+        exit;
+    }
+
+    // Category pages with slug 'berita' or 'pengumuman'
+    if (is_category()) {
+        $cat = get_queried_object();
+        if ($cat && is_object($cat)) {
+            $slug = strtolower($cat->slug);
+            $name = strtolower($cat->name);
+            if (in_array($slug, ['berita', 'pengumuman'], true) || in_array($name, ['berita', 'pengumuman'], true)) {
+                global $wp_query;
+                $wp_query->set_404();
+                status_header(404);
+                nocache_headers();
+                include get_query_template('404');
+                exit;
+            }
+        }
+    }
+}
+add_action('template_redirect', 'sdn_cilopang_block_berita_public', 1);
+
+// Block operator access to Posts admin screens (list and edit)
+function sdn_cilopang_block_posts_admin_access()
+{
+    if (current_user_can('manage_options')) {
+        return;
+    }
+
+    if (!function_exists('get_current_screen')) {
+        return;
+    }
+
+    $screen = get_current_screen();
+    if (!$screen) {
+        return;
+    }
+
+    // Posts list screen ID is 'edit-post', single post edit screen ID is 'post'
+    if ($screen->id === 'edit-post' || ($screen->id === 'post' && $screen->post_type === 'post')) {
+        wp_safe_redirect(admin_url());
+        exit;
+    }
+}
+add_action('admin_init', 'sdn_cilopang_block_posts_admin_access', 1);
+
+// Also remove Posts menu for non-admin users (defense-in-depth)
+add_action('admin_menu', function () {
+    if (!current_user_can('manage_options')) {
+        remove_menu_page('edit.php');
+    }
+}, 100);
+
+// Remove public category link references in nav/footer should be handled in theme (templates), but ensure homepage Berita removed earlier.
+
+
 function sdn_cilopang_hide_dashboard_widgets()
 {
     if (current_user_can('manage_options')) {
