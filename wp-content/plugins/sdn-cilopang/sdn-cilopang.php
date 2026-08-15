@@ -389,7 +389,7 @@ function sdn_cilopang_unified_admin_styles($hook)
     }
 
     $screen = get_current_screen();
-    if (!$screen || !in_array($screen->post_type, ['guru', 'agenda', 'fasilitas', 'ekstrakurikuler', 'post'], true)) {
+    if (!$screen || !in_array($screen->post_type, ['guru', 'fasilitas', 'ekstrakurikuler', 'post'], true)) {
         return;
     }
 
