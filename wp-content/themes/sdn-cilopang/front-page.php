@@ -26,7 +26,15 @@ $tagline = $settings['tagline']
  */
 
 $hero_judul = $settings['hero_judul']
-    ?? 'Selamat Datang di SDN Cilopang';
+    ?? 'Selamat Datang di SD Negeri Cilopang';
+
+$hero_judul_main = 'Selamat Datang';
+$hero_judul_sub = 'di SD Negeri Cilopang';
+
+if (preg_match('/^(.*?)\s+di\s+(.*)$/i', trim($hero_judul), $hero_matches)) {
+    $hero_judul_main = trim($hero_matches[1]);
+    $hero_judul_sub = 'di ' . trim($hero_matches[2]);
+}
 
 $hero_deskripsi = $settings['hero_deskripsi']
     ?? 'Membangun generasi yang berkarakter, berprestasi, dan siap menghadapi masa depan.';
@@ -106,12 +114,13 @@ get_header();
                 </span>
 
 
-                <h1>
-
-                    <?php
-                    echo esc_html($hero_judul);
-                    ?>
-
+                <h1 class="hero-title">
+                    <span class="hero-title__main">
+                        <?php echo esc_html($hero_judul_main); ?>
+                    </span>
+                    <span class="hero-title__sub">
+                        <?php echo esc_html($hero_judul_sub); ?>
+                    </span>
                 </h1>
 
 
@@ -140,12 +149,54 @@ get_header();
     </section>
 
 
+    <!-- =====================================================
+        STATISTIK SEKOLAH
+    ====================================================== -->
+
+    <section class="section section-statistik">
+
+       <div class="container">
+
+           <div class="sdn-statistik-grid">
+
+               <div class="sdn-statistik-item">
+                   <div class="sdn-statistik-number" data-count="<?php echo esc_attr(preg_replace('/[^0-9]/', '', $settings['jumlah_siswa'] ?? '0')); ?>">0</div>
+                   <div class="sdn-statistik-label">Siswa Aktif</div>
+               </div>
+
+               <div class="sdn-statistik-item">
+                   <?php
+                   $jumlah_guru = wp_count_posts('guru');
+                   $jumlah_guru_publish = $jumlah_guru->publish ?? 0;
+                   ?>
+                   <div class="sdn-statistik-number" data-count="<?php echo esc_attr($jumlah_guru_publish); ?>">0</div>
+                   <div class="sdn-statistik-label">Guru & Tendik</div>
+               </div>
+
+               <div class="sdn-statistik-item">
+                   <div class="sdn-statistik-number" data-count="<?php echo esc_attr(preg_replace('/[^0-9]/', '', $settings['tahun_berdiri'] ?? '0')); ?>">0</div>
+                   <div class="sdn-statistik-label">Tahun Berdiri</div>
+               </div>
+
+               <div class="sdn-statistik-item">
+                   <div class="sdn-statistik-number sdn-statistik-text">
+                       <?php echo esc_html($settings['akreditasi'] ?? '-'); ?>
+                   </div>
+                   <div class="sdn-statistik-label">Akreditasi</div>
+               </div>
+
+           </div>
+
+       </div>
+
+    </section>
+
 
     <!-- =====================================================
          PROFIL SEKOLAH
     ====================================================== -->
 
-    <section class="section">
+    <section class="section section-profil">
 
         <div class="container">
 
@@ -178,18 +229,36 @@ get_header();
             </div>
 
 
-            <?php if ($profil_image) : ?>
+            <div class="sdn-profile-grid">
 
-                <div class="sdn-profile-image">
+                <div class="sdn-profile-photo">
+                    <?php if ($profil_image) : ?>
+                        <img
+                            src="<?php echo esc_url($profil_image); ?>"
+                            alt="<?php echo esc_attr($profil_judul); ?>"
+                        >
+                    <?php else : ?>
+                        <div class="sdn-profile-no-photo" aria-hidden="true"></div>
+                    <?php endif; ?>
+                </div>
 
-                    <img
-                        src="<?php echo esc_url($profil_image); ?>"
-                        alt="<?php echo esc_attr($profil_judul); ?>"
-                    >
+                <div class="sdn-profile-content">
+
+                    <h3 class="sdn-profile-name">
+                        <?php echo esc_html($nama_sekolah); ?>
+                    </h3>
+
+                    <div class="sdn-profile-text">
+                        <?php
+                        echo nl2br(
+                            esc_html($profil_deskripsi)
+                        );
+                        ?>
+                    </div>
 
                 </div>
 
-            <?php endif; ?>
+            </div>
 
         </div>
 
@@ -296,37 +365,6 @@ get_header();
 
     </section>
 
-    <!-- =====================================================
-         AGENDA SEKOLAH
-    ====================================================== -->
-
-    <section class="section section-agenda">
-
-        <div class="container">
-
-            <div class="section-header">
-
-                <div class="section-label">
-                    INFORMASI SEKOLAH
-                </div>
-
-                <h2 class="section-title">
-                    Agenda Sekolah
-                </h2>
-
-                <p class="section-description">
-                    Informasi kegiatan dan agenda terbaru SDN Cilopang.
-                </p>
-
-            </div>
-
-            <?php
-            echo do_shortcode('[sdn_daftar_agenda]');
-            ?>
-
-        </div>
-
-    </section>
 </main>
 
 

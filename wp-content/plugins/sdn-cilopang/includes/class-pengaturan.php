@@ -86,6 +86,18 @@ function sdn_cilopang_sanitize_settings($input)
         $input['npsn'] ?? ''
     );
 
+    $output['jumlah_siswa'] = sanitize_text_field(
+        $input['jumlah_siswa'] ?? ''
+    );
+
+    $output['tahun_berdiri'] = sanitize_text_field(
+        $input['tahun_berdiri'] ?? ''
+    );
+
+    $output['akreditasi'] = sanitize_text_field(
+        $input['akreditasi'] ?? ''
+    );
+
     $output['profil_image'] = absint(
         $input['profil_image'] ?? 0
     );
@@ -101,6 +113,20 @@ function sdn_cilopang_sanitize_settings($input)
     $output['email'] = sanitize_email(
         $input['email'] ?? ''
     );
+
+    $social_keys = [
+        'facebook',
+        'instagram',
+        'youtube',
+        'tiktok',
+        'whatsapp',
+    ];
+
+    foreach ($social_keys as $key) {
+        $output[$key] = esc_url_raw(
+            $input[$key] ?? ''
+        );
+    }
 
     return $output;
 }
@@ -422,6 +448,64 @@ function sdn_cilopang_pengaturan_page()
                         </td>
                     </tr>
 
+                    <tr>
+                        <th>
+                            Jumlah Siswa
+                        </th>
+
+                        <td>
+
+                            <input
+                                type="text"
+                                name="sdn_cilopang_settings[jumlah_siswa]"
+                                value="<?php echo esc_attr(
+                                    $settings['jumlah_siswa'] ?? ''
+                                ); ?>"
+                                class="regular-text"
+                            >
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            Tahun Berdiri
+                        </th>
+
+                        <td>
+
+                            <input
+                                type="text"
+                                name="sdn_cilopang_settings[tahun_berdiri]"
+                                value="<?php echo esc_attr(
+                                    $settings['tahun_berdiri'] ?? ''
+                                ); ?>"
+                                class="regular-text"
+                            >
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            Akreditasi
+                        </th>
+
+                        <td>
+
+                            <input
+                                type="text"
+                                name="sdn_cilopang_settings[akreditasi]"
+                                value="<?php echo esc_attr(
+                                    $settings['akreditasi'] ?? ''
+                                ); ?>"
+                                class="regular-text"
+                                placeholder="Contoh: A, B, atau Belum Terakreditasi"
+                            >
+
+                        </td>
+                    </tr>
+
 
                     <tr>
                         <th>
@@ -505,6 +589,96 @@ function sdn_cilopang_pengaturan_page()
                                 class="regular-text"
                             >
 
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            Facebook
+                        </th>
+
+                        <td>
+                            <input
+                                type="url"
+                                name="sdn_cilopang_settings[facebook]"
+                                value="<?php echo esc_attr(
+                                    $settings['facebook'] ?? ''
+                                ); ?>"
+                                class="regular-text"
+                                placeholder="https://facebook.com/namaprofile"
+                            >
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            Instagram
+                        </th>
+
+                        <td>
+                            <input
+                                type="url"
+                                name="sdn_cilopang_settings[instagram]"
+                                value="<?php echo esc_attr(
+                                    $settings['instagram'] ?? ''
+                                ); ?>"
+                                class="regular-text"
+                                placeholder="https://instagram.com/namaprofile"
+                            >
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            YouTube
+                        </th>
+
+                        <td>
+                            <input
+                                type="url"
+                                name="sdn_cilopang_settings[youtube]"
+                                value="<?php echo esc_attr(
+                                    $settings['youtube'] ?? ''
+                                ); ?>"
+                                class="regular-text"
+                                placeholder="https://youtube.com/@channel"
+                            >
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            TikTok
+                        </th>
+
+                        <td>
+                            <input
+                                type="url"
+                                name="sdn_cilopang_settings[tiktok]"
+                                value="<?php echo esc_attr(
+                                    $settings['tiktok'] ?? ''
+                                ); ?>"
+                                class="regular-text"
+                                placeholder="https://tiktok.com/@namaprofile"
+                            >
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            WhatsApp
+                        </th>
+
+                        <td>
+                            <input
+                                type="url"
+                                name="sdn_cilopang_settings[whatsapp]"
+                                value="<?php echo esc_attr(
+                                    $settings['whatsapp'] ?? ''
+                                ); ?>"
+                                class="regular-text"
+                                placeholder="https://wa.me/6281234567890"
+                            >
                         </td>
                     </tr>
 

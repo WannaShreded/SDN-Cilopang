@@ -42,7 +42,7 @@ function sdn_cilopang_register_ekstrakurikuler()
         'rewrite'       => [
             'slug' => 'ekstrakurikuler',
         ],
-        'show_in_rest'  => true,
+        'show_in_rest'  => false,
     ];
 
     register_post_type('ekstrakurikuler', $args);
@@ -74,8 +74,37 @@ function sdn_cilopang_ekstrakurikuler_metabox()
 
 add_action(
     'add_meta_boxes',
-    'sdn_cilopang_ekstrakurikuler_metabox'
+    'sdn_cilopang_ekstrakurikuler_metabox',
+    10
 );
+
+
+function sdn_cilopang_ekstrakurikuler_title_placeholder($title)
+{
+    $screen = get_current_screen();
+    if (!$screen || $screen->post_type !== 'ekstrakurikuler') {
+        return $title;
+    }
+
+    return 'Nama Ekstrakurikuler';
+}
+
+add_filter('enter_title_here', 'sdn_cilopang_ekstrakurikuler_title_placeholder');
+
+function sdn_cilopang_ekstrakurikuler_featured_image_label($content)
+{
+    $screen = get_current_screen();
+    if (!$screen || $screen->post_type !== 'ekstrakurikuler') {
+        return $content;
+    }
+
+    $content = str_replace('Featured image', 'Foto Ekstrakurikuler', $content);
+    $content .= '<p class="description">Gunakan foto yang jelas agar kegiatan tampil lebih menarik di website.</p>';
+
+    return $content;
+}
+
+add_filter('admin_post_thumbnail_html', 'sdn_cilopang_ekstrakurikuler_featured_image_label');
 
 
 /**
@@ -108,50 +137,59 @@ function sdn_cilopang_ekstrakurikuler_metabox_html($post)
     );
     ?>
 
-    <p>
-        <label for="sdn_pembina">
-            <strong>Pembina</strong>
-        </label>
+    <div class="sdn-school-admin-shell">
+        <div class="sdn-school-admin-section">
+            <h3>Informasi Ekstrakurikuler</h3>
+            <div class="sdn-school-admin-field">
+                <span class="sdn-school-admin-help">Foto Ekstrakurikuler dapat dipilih melalui panel Gambar Unggulan di sebelah kanan.</span>
+            </div>
+            <div class="sdn-school-admin-grid">
+                <div class="sdn-school-admin-field">
+                    <label for="sdn_pembina">Pembina</label>
+                    <input
+                        type="text"
+                        id="sdn_pembina"
+                        name="sdn_pembina"
+                        value="<?php echo esc_attr($pembina); ?>"
+                        class="widefat"
+                        placeholder="Contoh: Budi Santoso, S.Pd."
+                    >
+                </div>
 
-        <input
-            type="text"
-            id="sdn_pembina"
-            name="sdn_pembina"
-            value="<?php echo esc_attr($pembina); ?>"
-            class="widefat"
-            placeholder="Contoh: Budi Santoso, S.Pd."
-        >
-    </p>
+                <div class="sdn-school-admin-field">
+                    <label for="sdn_jadwal">Jadwal</label>
+                    <input
+                        type="text"
+                        id="sdn_jadwal"
+                        name="sdn_jadwal"
+                        value="<?php echo esc_attr($jadwal); ?>"
+                        class="widefat"
+                        placeholder="Contoh: Jumat, 14.00 - 16.00"
+                    >
+                </div>
 
-    <p>
-        <label for="sdn_jadwal">
-            <strong>Jadwal</strong>
-        </label>
+                <div class="sdn-school-admin-field">
+                    <label for="sdn_tempat">Tempat</label>
+                    <input
+                        type="text"
+                        id="sdn_tempat"
+                        name="sdn_tempat"
+                        value="<?php echo esc_attr($tempat); ?>"
+                        class="widefat"
+                        placeholder="Contoh: Lapangan Sekolah"
+                    >
+                </div>
+            </div>
+        </div>
 
-        <input
-            type="text"
-            id="sdn_jadwal"
-            name="sdn_jadwal"
-            value="<?php echo esc_attr($jadwal); ?>"
-            class="widefat"
-            placeholder="Contoh: Jumat, 14.00 - 16.00"
-        >
-    </p>
-
-    <p>
-        <label for="sdn_tempat">
-            <strong>Tempat</strong>
-        </label>
-
-        <input
-            type="text"
-            id="sdn_tempat"
-            name="sdn_tempat"
-            value="<?php echo esc_attr($tempat); ?>"
-            class="widefat"
-            placeholder="Contoh: Lapangan Sekolah"
-        >
-    </p>
+        <div class="sdn-school-admin-section">
+            <h3>Deskripsi Ekstrakurikuler</h3>
+            <div class="sdn-school-admin-field">
+                <span class="sdn-school-admin-label">Editor Deskripsi</span>
+                <span class="sdn-school-admin-help">Tambahkan penjelasan singkat agar kegiatan mudah dipahami masyarakat sekolah.</span>
+            </div>
+        </div>
+    </div>
 
     <?php
 }
@@ -288,30 +326,32 @@ function sdn_cilopang_daftar_ekstrakurikuler()
                         <?php the_title(); ?>
                     </h3>
 
-                    <?php if ($pembina) : ?>
+                    <?php if ($pembina || $jadwal || $tempat) : ?>
 
-                        <p>
-                            <strong>Pembina:</strong>
-                            <?php echo esc_html($pembina); ?>
-                        </p>
+                        <div class="sdn-ekstrakurikuler-meta">
 
-                    <?php endif; ?>
+                            <?php if ($pembina) : ?>
+                                <div class="sdn-ekstrakurikuler-meta-item">
+                                    <span class="sdn-ekstrakurikuler-meta-label">Pembina</span>
+                                    <span class="sdn-ekstrakurikuler-meta-value"><?php echo esc_html($pembina); ?></span>
+                                </div>
+                            <?php endif; ?>
 
-                    <?php if ($jadwal) : ?>
+                            <?php if ($jadwal) : ?>
+                                <div class="sdn-ekstrakurikuler-meta-item">
+                                    <span class="sdn-ekstrakurikuler-meta-label">Jadwal</span>
+                                    <span class="sdn-ekstrakurikuler-meta-value"><?php echo esc_html($jadwal); ?></span>
+                                </div>
+                            <?php endif; ?>
 
-                        <p>
-                            <strong>Jadwal:</strong>
-                            <?php echo esc_html($jadwal); ?>
-                        </p>
+                            <?php if ($tempat) : ?>
+                                <div class="sdn-ekstrakurikuler-meta-item">
+                                    <span class="sdn-ekstrakurikuler-meta-label">Tempat</span>
+                                    <span class="sdn-ekstrakurikuler-meta-value"><?php echo esc_html($tempat); ?></span>
+                                </div>
+                            <?php endif; ?>
 
-                    <?php endif; ?>
-
-                    <?php if ($tempat) : ?>
-
-                        <p>
-                            <strong>Tempat:</strong>
-                            <?php echo esc_html($tempat); ?>
-                        </p>
+                        </div>
 
                     <?php endif; ?>
 

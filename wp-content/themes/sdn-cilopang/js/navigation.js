@@ -1,14 +1,59 @@
-document.addEventListener('DOMContentLoaded', function () {
+﻿document.addEventListener('DOMContentLoaded', function () {
     var navToggle = document.querySelector('.nav-toggle');
     var primaryNavigation = document.getElementById('primary-navigation');
+    var navOverlay = document.getElementById('nav-overlay');
+    var navDrawerClose = document.querySelector('.nav-drawer-close');
+
+    function setMobileMenuState(isOpen) {
+        if (!primaryNavigation || !navToggle) {
+            return;
+        }
+
+        primaryNavigation.classList.toggle('is-open', isOpen);
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+        document.body.classList.toggle('nav-open', isOpen);
+
+        if (navOverlay) {
+            navOverlay.classList.toggle('is-open', isOpen);
+        }
+
+        if (!isOpen) {
+            primaryNavigation.querySelectorAll('.menu-item-has-children.submenu-open').forEach(function (parent) {
+                parent.classList.remove('submenu-open');
+                var submenuToggle = parent.querySelector('.submenu-toggle');
+                if (submenuToggle) {
+                    submenuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    }
 
     if (navToggle && primaryNavigation) {
+        setMobileMenuState(false);
+
         navToggle.addEventListener('click', function () {
-            var isExpanded = this.getAttribute('aria-expanded') === 'true';
-            this.setAttribute('aria-expanded', String(!isExpanded));
-            primaryNavigation.classList.toggle('is-open');
+            var isOpen = primaryNavigation.classList.contains('is-open');
+            setMobileMenuState(!isOpen);
         });
     }
+
+    if (navDrawerClose) {
+        navDrawerClose.addEventListener('click', function () {
+            setMobileMenuState(false);
+        });
+    }
+
+    if (navOverlay) {
+        navOverlay.addEventListener('click', function () {
+            setMobileMenuState(false);
+        });
+    }
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && primaryNavigation && primaryNavigation.classList.contains('is-open')) {
+            setMobileMenuState(false);
+        }
+    });
 
     if (!primaryNavigation) {
         return;

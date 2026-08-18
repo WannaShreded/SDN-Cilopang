@@ -42,7 +42,8 @@
 
                 <div class="guru-detail">
 
-                    <div class="guru-detail-photo">
+                    <?php $sdn_guru_pid = get_the_ID(); ?>
+                    <div class="guru-detail-photo" style="view-transition-name: 'guru-photo-<?php echo esc_attr($sdn_guru_pid); ?>';">
 
                         <?php if (has_post_thumbnail()) : ?>
 

@@ -120,40 +120,42 @@ get_header();
 
             <div class="school-identity">
 
-                <p>
-                    <strong>Nama Sekolah:</strong>
-                    <?php echo esc_html($nama_sekolah); ?>
-                </p>
+                <div class="identity-grid" role="table" aria-label="Identitas Sekolah">
 
-                <?php if ($npsn) : ?>
-                    <p>
-                        <strong>NPSN:</strong>
-                        <?php echo esc_html($npsn); ?>
-                    </p>
-                <?php endif; ?>
+                    <div class="identity-row">
+                        <div class="identity-key" role="rowheader">Nama Sekolah</div>
+                        <div class="identity-value" role="cell"><?php echo esc_html($nama_sekolah); ?></div>
+                    </div>
 
-                <?php if ($alamat) : ?>
-                    <p>
-                        <strong>Alamat:</strong>
-                        <?php echo nl2br(esc_html($alamat)); ?>
-                    </p>
-                <?php endif; ?>
+                    <?php if ($npsn) : ?>
+                        <div class="identity-row">
+                            <div class="identity-key" role="rowheader">NPSN</div>
+                            <div class="identity-value" role="cell"><?php echo esc_html($npsn); ?></div>
+                        </div>
+                    <?php endif; ?>
 
-                <?php if ($telepon) : ?>
-                    <p>
-                        <strong>Telepon:</strong>
-                        <?php echo esc_html($telepon); ?>
-                    </p>
-                <?php endif; ?>
+                    <?php if ($alamat) : ?>
+                        <div class="identity-row">
+                            <div class="identity-key" role="rowheader">Alamat</div>
+                            <div class="identity-value" role="cell"><?php echo nl2br(esc_html($alamat)); ?></div>
+                        </div>
+                    <?php endif; ?>
 
-                <?php if ($email) : ?>
-                    <p>
-                        <strong>Email:</strong>
-                        <a href="mailto:<?php echo esc_attr($email); ?>">
-                            <?php echo esc_html($email); ?>
-                        </a>
-                    </p>
-                <?php endif; ?>
+                    <?php if ($telepon) : ?>
+                        <div class="identity-row">
+                            <div class="identity-key" role="rowheader">Telepon</div>
+                            <div class="identity-value" role="cell"><?php echo esc_html($telepon); ?></div>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($email) : ?>
+                        <div class="identity-row">
+                            <div class="identity-key" role="rowheader">Email</div>
+                            <div class="identity-value" role="cell"><a href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a></div>
+                        </div>
+                    <?php endif; ?>
+
+                </div>
 
             </div>
 

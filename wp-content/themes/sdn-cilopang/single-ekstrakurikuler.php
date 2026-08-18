@@ -43,15 +43,24 @@ get_header();
                         <div class="sdn-ekstrakurikuler-meta">
 
                             <?php if ($pembina) : ?>
-                                <p><strong>Pembina:</strong> <?php echo esc_html($pembina); ?></p>
+                                <div class="sdn-ekstrakurikuler-meta-item">
+                                    <span class="sdn-ekstrakurikuler-meta-label">Pembina</span>
+                                    <span class="sdn-ekstrakurikuler-meta-value"><?php echo esc_html($pembina); ?></span>
+                                </div>
                             <?php endif; ?>
 
                             <?php if ($jadwal) : ?>
-                                <p><strong>Jadwal:</strong> <?php echo esc_html($jadwal); ?></p>
+                                <div class="sdn-ekstrakurikuler-meta-item">
+                                    <span class="sdn-ekstrakurikuler-meta-label">Jadwal</span>
+                                    <span class="sdn-ekstrakurikuler-meta-value"><?php echo esc_html($jadwal); ?></span>
+                                </div>
                             <?php endif; ?>
 
                             <?php if ($tempat) : ?>
-                                <p><strong>Tempat:</strong> <?php echo esc_html($tempat); ?></p>
+                                <div class="sdn-ekstrakurikuler-meta-item">
+                                    <span class="sdn-ekstrakurikuler-meta-label">Tempat</span>
+                                    <span class="sdn-ekstrakurikuler-meta-value"><?php echo esc_html($tempat); ?></span>
+                                </div>
                             <?php endif; ?>
 
                         </div>

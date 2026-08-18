@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 if (!defined('ABSPATH')) {
     exit;
@@ -88,12 +88,17 @@ $logo = !empty($settings['logo'])
             <span class="nav-toggle__bar"></span>
             <span class="screen-reader-text">Menu</span>
         </button>
+        
+        <div class="nav-overlay" id="nav-overlay"></div>
 
         <nav
             id="primary-navigation"
             class="main-navigation"
             aria-label="Menu Utama"
         >
+            <button type="button" class="nav-drawer-close" aria-label="Tutup menu">
+                &times;
+            </button>
 
             <?php
             wp_nav_menu([

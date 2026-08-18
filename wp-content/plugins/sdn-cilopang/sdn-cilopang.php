@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Plugin Name: SDN Cilopang
  * Description: Plugin khusus untuk website SDN Cilopang.
@@ -933,17 +933,5 @@ add_shortcode(
  * =========================================================
  */
 
-function sdn_cilopang_enqueue_styles()
-{
-    wp_enqueue_style(
-        'sdn-cilopang-style',
-        plugin_dir_url(__FILE__) . 'public/css/style.css',
-        [],
-        '1.0.0'
-    );
-}
 
-add_action(
-    'wp_enqueue_scripts',
-    'sdn_cilopang_enqueue_styles'
-);
+
