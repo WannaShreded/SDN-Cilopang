@@ -1531,24 +1531,151 @@ body.page-profil-sekolah .school-identity {
    margin-right: auto;
 }
 
+/* Wider container for profile page to use more horizontal space */
+body.page-profil-sekolah .container {
+   width: min(1250px, calc(100% - 48px));
+}
+
+/* Reduce vertical padding for profile page sections to make content denser */
+body.page-profil-sekolah .section {
+   padding: 60px 0;
+}
+
+/* Ensure section headers for profile page use the wider constraints */
+body.page-profil-sekolah .section-header {
+   max-width: 1100px;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: center;
+}
+
+/* Wide profile grid (two-column) */
+.profile-wide-grid {
+   display: grid;
+   grid-template-columns: 45% 55%;
+   gap: 36px;
+   align-items: start;
+   max-width: 1200px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.profile-col-photo .profile-photo-wrap {
+   width: 100%;
+   aspect-ratio: 4 / 3;
+   overflow: hidden;
+   border-radius: 16px;
+   background: #f8fafc;
+   box-shadow: 0 10px 24px rgba(15,23,42,0.06);
+}
+
+.profile-col-photo .profile-photo-wrap img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   display: block;
+}
+
+.profile-col-content .profile-col-title {
+   margin: 0 0 8px;
+   font-size: clamp(1.6rem, 2.5vw, 2rem);
+   line-height: 1.12;
+   font-weight: 800;
+   color: #172033;
+}
+
+.profile-intro {
+   margin: 0 0 14px;
+   color: #334155;
+   line-height: 1.7;
+}
+
+.profile-sejarah-extended {
+   color: #64748b;
+   line-height: 1.8;
+}
+
+@media (max-width: 1000px) {
+   .profile-wide-grid {
+       grid-template-columns: 1fr;
+   }
+
+   .profile-col-photo .profile-photo-wrap {
+       aspect-ratio: 16 / 9;
+   }
+
+   .profile-col-content {
+       padding-top: 12px;
+   }
+}
+
+/* Visi & Misi - combined two-column layout */
+.section-vision-mission .section-header {
+   max-width: 1100px;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: center;
+}
+
+.vm-grid {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 24px;
+   max-width: 1100px;
+   margin-left: auto;
+   margin-right: auto;
+   align-items: start;
+}
+
+.vm-card {
+   background: #ffffff;
+   border-radius: 12px;
+   padding: 20px;
+   border: 1px solid rgba(148,163,184,0.08);
+   box-shadow: 0 8px 20px rgba(15,23,42,0.04);
+}
+
+.vm-card h3 {
+   margin: 0 0 8px;
+   font-size: 1.1rem;
+   color: #172033;
+   font-weight: 800;
+}
+
+.vm-card .vm-content {
+   color: #475569;
+   line-height: 1.7;
+}
+
+.vm-card ul {
+   margin: 0 0 0 1.2rem;
+}
+
+@media (max-width: 1000px) {
+   .vm-grid {
+       grid-template-columns: 1fr;
+   }
+
+   .vm-card {
+       padding: 16px;
+   }
+}
+
 body.page-profil-sekolah .school-identity .identity-grid {
    display: grid;
-   gap: 12px;
-   padding: 10px;
+   gap: 16px;
+   padding: 14px;
    background: #f8fafc;
    border: 1px solid rgba(148, 163, 184, 0.25);
    border-radius: 18px;
+   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-body.page-profil-sekolah .school-identity .identity-row {
-   display: grid;
-   grid-template-columns: 180px minmax(0, 1fr);
-   gap: 18px;
-   align-items: center;
-   padding: 16px 18px;
+body.page-profil-sekolah .school-identity .identity-item {
    background: #ffffff;
-   border: 1px solid rgba(148, 163, 184, 0.15);
+   padding: 14px 16px;
    border-radius: 12px;
+   border: 1px solid rgba(148, 163, 184, 0.12);
 }
 
 body.page-profil-sekolah .identity-key {
@@ -1558,6 +1685,9 @@ body.page-profil-sekolah .identity-key {
 }
 
 body.page-profil-sekolah .identity-value {
+   margin-top: 6px;
+   color: #64748b;
+
    color: #111827;
    font-size: 1rem;
    font-weight: 600;

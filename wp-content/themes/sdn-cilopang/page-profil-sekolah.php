@@ -77,26 +77,42 @@ get_header();
                     TENTANG SEKOLAH
                 </div>
 
-                <h2 class="section-title">
-                    <?php echo esc_html($profil_judul ?: 'Tentang Sekolah'); ?>
-                </h2>
+                
 
             </div>
 
-            <?php if ($profil_image_url) : ?>
-                <div class="profile-image">
-                    <img
-                        src="<?php echo esc_url($profil_image_url); ?>"
-                        alt="<?php echo esc_attr($profil_judul ?: $nama_sekolah); ?>"
-                    >
-                </div>
-            <?php endif; ?>
+            <div class="profile-wide-grid">
 
-            <?php if ($sejarah) : ?>
-                <div class="profile-sejarah">
-                    <?php echo nl2br(esc_html($sejarah)); ?>
+                <div class="profile-col-photo">
+                    <?php if ($profil_image_url) : ?>
+                        <div class="profile-photo-wrap">
+                            <img
+                                src="<?php echo esc_url($profil_image_url); ?>"
+                                alt="<?php echo esc_attr($profil_judul ?: $nama_sekolah); ?>"
+                            >
+                        </div>
+                    <?php else : ?>
+                        <div class="profile-photo-wrap no-photo" aria-hidden="true"></div>
+                    <?php endif; ?>
                 </div>
-            <?php endif; ?>
+
+                <div class="profile-col-content">
+
+                    <h3 class="profile-col-title"><?php echo esc_html($nama_sekolah); ?></h3>
+
+                    <?php if ($hero_description) : ?>
+                        <p class="profile-intro"><?php echo nl2br(esc_html($hero_description)); ?></p>
+                    <?php endif; ?>
+
+                    <?php if ($sejarah) : ?>
+                        <div class="profile-sejarah-extended">
+                            <?php echo nl2br(esc_html($sejarah)); ?>
+                        </div>
+                    <?php endif; ?>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -120,38 +136,38 @@ get_header();
 
             <div class="school-identity">
 
-                <div class="identity-grid" role="table" aria-label="Identitas Sekolah">
+                <div class="identity-grid two-column" role="table" aria-label="Identitas Sekolah">
 
-                    <div class="identity-row">
-                        <div class="identity-key" role="rowheader">Nama Sekolah</div>
-                        <div class="identity-value" role="cell"><?php echo esc_html($nama_sekolah); ?></div>
+                    <div class="identity-item">
+                        <div class="identity-key">Nama Sekolah</div>
+                        <div class="identity-value"><?php echo esc_html($nama_sekolah); ?></div>
                     </div>
 
                     <?php if ($npsn) : ?>
-                        <div class="identity-row">
-                            <div class="identity-key" role="rowheader">NPSN</div>
-                            <div class="identity-value" role="cell"><?php echo esc_html($npsn); ?></div>
+                        <div class="identity-item">
+                            <div class="identity-key">NPSN</div>
+                            <div class="identity-value"><?php echo esc_html($npsn); ?></div>
                         </div>
                     <?php endif; ?>
 
                     <?php if ($alamat) : ?>
-                        <div class="identity-row">
-                            <div class="identity-key" role="rowheader">Alamat</div>
-                            <div class="identity-value" role="cell"><?php echo nl2br(esc_html($alamat)); ?></div>
+                        <div class="identity-item">
+                            <div class="identity-key">Alamat</div>
+                            <div class="identity-value"><?php echo nl2br(esc_html($alamat)); ?></div>
                         </div>
                     <?php endif; ?>
 
                     <?php if ($telepon) : ?>
-                        <div class="identity-row">
-                            <div class="identity-key" role="rowheader">Telepon</div>
-                            <div class="identity-value" role="cell"><?php echo esc_html($telepon); ?></div>
+                        <div class="identity-item">
+                            <div class="identity-key">Telepon</div>
+                            <div class="identity-value"><?php echo esc_html($telepon); ?></div>
                         </div>
                     <?php endif; ?>
 
                     <?php if ($email) : ?>
-                        <div class="identity-row">
-                            <div class="identity-key" role="rowheader">Email</div>
-                            <div class="identity-value" role="cell"><a href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a></div>
+                        <div class="identity-item">
+                            <div class="identity-key">Email</div>
+                            <div class="identity-value"><a href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a></div>
                         </div>
                     <?php endif; ?>
 
@@ -163,59 +179,49 @@ get_header();
 
     </section>
 
-    <?php if ($visi) : ?>
-        <section class="section section-school-vision">
+    <?php if ($visi || $misi) : ?>
+        <section class="section section-vision-mission">
 
             <div class="container">
 
                 <div class="section-header">
 
                     <div class="section-label">
-                        VISI
+                        VISI &amp; MISI
                     </div>
 
                     <h2 class="section-title">
-                        Visi
+                        Visi &amp; Misi
                     </h2>
 
                 </div>
 
-                <div class="school-vision">
-                    <p><?php echo nl2br(esc_html($visi)); ?></p>
-                </div>
+                <div class="vm-grid">
 
-            </div>
-
-        </section>
-    <?php endif; ?>
-
-    <?php if ($misi) : ?>
-        <section class="section section-school-mission">
-
-            <div class="container">
-
-                <div class="section-header">
-
-                    <div class="section-label">
-                        MISI
+                    <div class="vm-card vm-vision">
+                        <h3>Visi</h3>
+                        <div class="vm-content">
+                            <?php echo nl2br(esc_html($visi)); ?>
+                        </div>
                     </div>
 
-                    <h2 class="section-title">
-                        Misi
-                    </h2>
+                    <div class="vm-card vm-mission">
+                        <h3>Misi</h3>
+                        <div class="vm-content">
+                            <?php if ($misi) : ?>
+                                <?php if (count($misi_items) > 1) : ?>
+                                    <ul>
+                                        <?php foreach ($misi_items as $item) : ?>
+                                            <li><?php echo esc_html(trim($item)); ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php else : ?>
+                                    <p><?php echo esc_html($misi); ?></p>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
 
-                </div>
-
-                <div class="school-mission">
-                    <?php if (count($misi_items) > 1) : ?>
-                        <ul>
-                            <?php foreach ($misi_items as $item) : ?>
-                                <li><?php echo esc_html(trim($item)); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    <?php else : ?>
-                        <p><?php echo esc_html($misi); ?></p>
-                    <?php endif; ?>
                 </div>
 
             </div>

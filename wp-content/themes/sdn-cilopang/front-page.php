@@ -180,7 +180,7 @@ get_header();
 
                <div class="sdn-statistik-item">
                    <div class="sdn-statistik-number sdn-statistik-text">
-                       <?php echo esc_html($settings['akreditasi'] ?? '-'); ?>
+                       <?php echo esc_html($settings['akreditasi'] ?: '-'); ?>
                    </div>
                    <div class="sdn-statistik-label">Akreditasi</div>
                </div>
@@ -196,7 +196,7 @@ get_header();
          PROFIL SEKOLAH
     ====================================================== -->
 
-    <section class="section section-profil">
+    <section class="section">
 
         <div class="container">
 
@@ -229,33 +229,21 @@ get_header();
             </div>
 
 
-            <div class="sdn-profile-grid">
+            <div class="profile-wide-grid">
 
-                <div class="sdn-profile-photo">
+                <div class="profile-col-photo">
                     <?php if ($profil_image) : ?>
-                        <img
-                            src="<?php echo esc_url($profil_image); ?>"
-                            alt="<?php echo esc_attr($profil_judul); ?>"
-                        >
+                        <div class="profile-photo-wrap">
+                            <img src="<?php echo esc_url($profil_image); ?>" alt="<?php echo esc_attr($profil_judul); ?>">
+                        </div>
                     <?php else : ?>
-                        <div class="sdn-profile-no-photo" aria-hidden="true"></div>
+                        <div class="profile-photo-wrap no-photo" aria-hidden="true"></div>
                     <?php endif; ?>
                 </div>
 
-                <div class="sdn-profile-content">
-
-                    <h3 class="sdn-profile-name">
-                        <?php echo esc_html($nama_sekolah); ?>
-                    </h3>
-
-                    <div class="sdn-profile-text">
-                        <?php
-                        echo nl2br(
-                            esc_html($profil_deskripsi)
-                        );
-                        ?>
-                    </div>
-
+                <div class="profile-col-content">
+                    <h3 class="profile-col-title"><?php echo esc_html($nama_sekolah); ?></h3>
+                    <div class="profile-intro"><?php echo nl2br(esc_html($profil_deskripsi)); ?></div>
                 </div>
 
             </div>
