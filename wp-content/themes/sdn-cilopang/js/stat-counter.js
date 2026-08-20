@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        var duration = 5200;
+        var duration = 2200;
         var startTime = null;
 
         function step(timestamp) {

@@ -6,8 +6,8 @@
 }
 
 .sdn-guru-card {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
+    background: var(--color-putih)fff;
+    border: 1px solid var(--color-merah-tint);
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
@@ -24,7 +24,7 @@
     aspect-ratio: 4 / 5;
     max-height: 240px;
     overflow: hidden;
-    background: #f3f4f6;
+    background: var(--color-putih-tulang);
 }
 
 .sdn-guru-photo img {
@@ -39,7 +39,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: #6b7280;
+    color: var(--color-arang-soft);
     font-size: 14px;
 }
 
@@ -61,7 +61,7 @@
 
 .sdn-guru-mapel {
     margin: 0;
-    color: #6b7280;
+    color: var(--color-arang-soft);
     font-size: 14px;
 }
 
@@ -89,8 +89,8 @@
 }
 
 .sdn-fasilitas-card {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
+    background: var(--color-putih)fff;
+    border: 1px solid var(--color-merah-tint);
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
@@ -108,7 +108,7 @@
     width: 100%;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: #f3f4f6;
+    background: var(--color-putih-tulang);
 }
 
 .sdn-fasilitas-photo img {
@@ -123,7 +123,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: #6b7280;
+    color: var(--color-arang-soft);
     font-size: 14px;
 }
 
@@ -138,7 +138,7 @@
 }
 
 .sdn-fasilitas-description {
-    color: #6b7280;
+    color: var(--color-arang-soft);
     font-size: 15px;
     line-height: 1.7;
 }
@@ -177,8 +177,8 @@
 }
 
 .sdn-ekstrakurikuler-card {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
+    background: var(--color-putih)fff;
+    border: 1px solid var(--color-merah-tint);
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
@@ -196,7 +196,7 @@
     width: 100%;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: #f3f4f6;
+    background: var(--color-putih-tulang);
 }
 
 .sdn-ekstrakurikuler-photo img {
@@ -211,7 +211,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: #6b7280;
+    color: var(--color-arang-soft);
     font-size: 14px;
 }
 
@@ -232,7 +232,7 @@
 
 .sdn-ekstrakurikuler-description {
     margin-top: 15px;
-    color: #6b7280;
+    color: var(--color-arang-soft);
     font-size: 15px;
     line-height: 1.7;
 }
@@ -267,8 +267,8 @@
 .sdn-agenda-card {
     display: flex;
     align-items: stretch;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
+    background: var(--color-putih)fff;
+    border: 1px solid var(--color-merah-tint);
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
@@ -289,7 +289,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #f3f4f6;
+    background: var(--color-putih-tulang);
     text-align: center;
     padding: 20px;
 }
@@ -324,7 +324,7 @@
 
 .sdn-agenda-description {
     margin-top: 14px;
-    color: #6b7280;
+    color: var(--color-arang-soft);
     line-height: 1.7;
 }
 

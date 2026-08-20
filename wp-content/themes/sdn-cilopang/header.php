@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 if (!defined('ABSPATH')) {
     exit;
@@ -48,6 +48,8 @@ $logo = !empty($settings['logo'])
 
     <div class="container header-inner">
 
+        <div class="header-left">
+
         <a
             href="<?php echo esc_url(home_url('/')); ?>"
             class="site-logo"
@@ -76,6 +78,8 @@ $logo = !empty($settings['logo'])
 
         </a>
 
+        </div>
+<div class="header-right">
 
         <button
             class="nav-toggle"
@@ -109,6 +113,8 @@ $logo = !empty($settings['logo'])
             ?>
 
         </nav>
+
+        </div>
 
     </div>
 

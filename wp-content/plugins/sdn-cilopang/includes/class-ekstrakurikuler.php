@@ -152,7 +152,7 @@ function sdn_cilopang_ekstrakurikuler_metabox_html($post)
                         name="sdn_pembina"
                         value="<?php echo esc_attr($pembina); ?>"
                         class="widefat"
-                        placeholder="Contoh: Budi Santoso, S.Pd."
+                        placeholder="Nama Pembina Ekstrakurikuler"
                     >
                 </div>
 
@@ -302,7 +302,7 @@ function sdn_cilopang_daftar_ekstrakurikuler()
             );
             ?>
 
-            <article class="sdn-ekstrakurikuler-card">
+            <article class="card sdn-ekstrakurikuler-card">
 
                 <div class="sdn-ekstrakurikuler-photo">
 

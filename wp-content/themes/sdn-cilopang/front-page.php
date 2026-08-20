@@ -155,39 +155,65 @@ get_header();
 
     <section class="section section-statistik">
 
-       <div class="container">
+        <div class="section-statistik-overlay"></div>
 
-           <div class="sdn-statistik-grid">
+        <div class="container">
 
-               <div class="sdn-statistik-item">
-                   <div class="sdn-statistik-number" data-count="<?php echo esc_attr(preg_replace('/[^0-9]/', '', $settings['jumlah_siswa'] ?? '0')); ?>">0</div>
-                   <div class="sdn-statistik-label">Siswa Aktif</div>
-               </div>
+            <div class="sdn-statistik-grid">
 
-               <div class="sdn-statistik-item">
-                   <?php
-                   $jumlah_guru = wp_count_posts('guru');
-                   $jumlah_guru_publish = $jumlah_guru->publish ?? 0;
-                   ?>
-                   <div class="sdn-statistik-number" data-count="<?php echo esc_attr($jumlah_guru_publish); ?>">0</div>
-                   <div class="sdn-statistik-label">Guru & Tendik</div>
-               </div>
+                <div class="sdn-statistik-item">
+                    <div class="sdn-statistik-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10L12 5 2 10l10 5 10-5z"></path>
+                            <path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"></path>
+                        </svg>
+                    </div>
+                    <div class="sdn-statistik-number" data-count="<?php echo esc_attr(preg_replace('/[^0-9]/', '', $settings['jumlah_siswa'] ?? '0')); ?>">0</div>
+                    <div class="sdn-statistik-label">Siswa Aktif</div>
+                </div>
 
-               <div class="sdn-statistik-item">
-                   <div class="sdn-statistik-number" data-count="<?php echo esc_attr(preg_replace('/[^0-9]/', '', $settings['tahun_berdiri'] ?? '0')); ?>">0</div>
-                   <div class="sdn-statistik-label">Tahun Berdiri</div>
-               </div>
+                <div class="sdn-statistik-item">
+                    <?php
+                    $jumlah_guru = wp_count_posts('guru');
+                    $jumlah_guru_publish = $jumlah_guru->publish ?? 0;
+                    ?>
+                    <div class="sdn-statistik-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10L12 5 2 10l10 5 10-5z"></path>
+                            <path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"></path>
+                        </svg>
+                    </div>
+                    <div class="sdn-statistik-number" data-count="<?php echo esc_attr($jumlah_guru_publish); ?>">0</div>
+                    <div class="sdn-statistik-label">Guru & Tendik</div>
+                </div>
 
-               <div class="sdn-statistik-item">
-                   <div class="sdn-statistik-number sdn-statistik-text">
-                       <?php echo esc_html($settings['akreditasi'] ?: '-'); ?>
-                   </div>
-                   <div class="sdn-statistik-label">Akreditasi</div>
-               </div>
+                <div class="sdn-statistik-item">
+                    <div class="sdn-statistik-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10L12 5 2 10l10 5 10-5z"></path>
+                            <path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"></path>
+                        </svg>
+                    </div>
+                    <div class="sdn-statistik-number" data-count="<?php echo esc_attr(preg_replace('/[^0-9]/', '', $settings['tahun_berdiri'] ?? '0')); ?>">0</div>
+                    <div class="sdn-statistik-label">Tahun Berdiri</div>
+                </div>
 
-           </div>
+                <div class="sdn-statistik-item">
+                    <div class="sdn-statistik-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="6"></circle>
+                            <path d="M9 14l-2 7 5-3 5 3-2-7"></path>
+                        </svg>
+                    </div>
+                    <div class="sdn-statistik-number sdn-statistik-text">
+                        <?php echo esc_html($settings['akreditasi'] ?: '-'); ?>
+                    </div>
+                    <div class="sdn-statistik-label">Akreditasi</div>
+                </div>
 
-       </div>
+            </div>
+
+        </div>
 
     </section>
 
@@ -206,26 +232,6 @@ get_header();
                     Tentang Kami
                 </div>
 
-
-                <h2 class="section-title">
-
-                    <?php
-                    echo esc_html($profil_judul);
-                    ?>
-
-                </h2>
-
-
-                <p class="section-description">
-
-                    <?php
-                    echo nl2br(
-                        esc_html($profil_deskripsi)
-                    );
-                    ?>
-
-                </p>
-
             </div>
 
 
@@ -233,16 +239,16 @@ get_header();
 
                 <div class="profile-col-photo">
                     <?php if ($profil_image) : ?>
-                        <div class="profile-photo-wrap">
+                        <div class="profile-photo-wrap sdn-slide-left">
                             <img src="<?php echo esc_url($profil_image); ?>" alt="<?php echo esc_attr($profil_judul); ?>">
                         </div>
                     <?php else : ?>
-                        <div class="profile-photo-wrap no-photo" aria-hidden="true"></div>
+                        <div class="profile-photo-wrap no-photo sdn-slide-left" aria-hidden="true"></div>
                     <?php endif; ?>
                 </div>
 
-                <div class="profile-col-content">
-                    <h3 class="profile-col-title"><?php echo esc_html($nama_sekolah); ?></h3>
+                <div class="profile-col-content sdn-slide-right">
+                    <h4 class="profile-col-title"><?php echo esc_html($nama_sekolah); ?></h4>
                     <div class="profile-intro"><?php echo nl2br(esc_html($profil_deskripsi)); ?></div>
                 </div>
 

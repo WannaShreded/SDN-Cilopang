@@ -44,9 +44,16 @@ add_action(
 function sdn_cilopang_theme_enqueue_styles()
 {
     wp_enqueue_style(
+        'sdn-cilopang-google-fonts',
+        'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap',
+        [],
+        null
+    );
+
+    wp_enqueue_style(
         'sdn-cilopang-theme-style',
         get_stylesheet_uri(),
-        [],
+        ['sdn-cilopang-google-fonts'],
         filemtime(
             get_template_directory() . '/style.css'
         )
@@ -112,6 +119,7 @@ function sdn_cilopang_theme_enqueue_scripts()
     );
 }
 
+
 add_action(
     'wp_enqueue_scripts',
     'sdn_cilopang_theme_enqueue_scripts'
@@ -125,3 +133,35 @@ function sdn_cilopang_hide_frontend_admin_bar_for_non_admin()
 }
 
 add_action('after_setup_theme', 'sdn_cilopang_hide_frontend_admin_bar_for_non_admin');
+
+function sdn_cilopang_enqueue_guru_carousel()
+{
+    wp_enqueue_style(
+        'swiper',
+        'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css',
+        [],
+        '10.0.0'
+    );
+
+    wp_enqueue_script(
+        'swiper',
+        'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js',
+        [],
+        '10.0.0',
+        true
+    );
+
+    // Pastikan file guru-carousel.js benar-benar ada di dalam folder js/
+    wp_enqueue_script(
+        'sdn-cilopang-guru-carousel',
+        get_template_directory_uri() . '/js/guru-carousel.js',
+        ['swiper'],
+        filemtime(get_template_directory() . '/js/guru-carousel.js'), // Menghindari cache nyangkut
+        true
+    );
+}
+
+add_action(
+    'wp_enqueue_scripts',
+    'sdn_cilopang_enqueue_guru_carousel'
+);

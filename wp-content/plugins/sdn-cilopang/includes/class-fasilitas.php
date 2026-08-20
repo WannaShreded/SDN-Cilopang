@@ -188,7 +188,7 @@ function sdn_cilopang_daftar_fasilitas()
 
         <?php while ($query->have_posts()) : $query->the_post(); ?>
 
-            <article class="sdn-fasilitas-card">
+            <article class="card sdn-fasilitas-card">
 
                 <div class="sdn-fasilitas-photo">
 

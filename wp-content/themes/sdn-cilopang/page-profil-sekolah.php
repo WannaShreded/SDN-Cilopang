@@ -56,9 +56,6 @@ get_header();
                 <?php endif; ?>
 
                 <?php if ($hero_description) : ?>
-                    <p class="section-description">
-                        <?php echo esc_html($hero_description); ?>
-                    </p>
                 <?php endif; ?>
 
             </div>

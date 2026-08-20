@@ -6,6 +6,54 @@ Description: Theme khusus website SDN Cilopang.
 Version: 1.0.0
 */
 
+/* ======================================================================
+   SDN CILOPANG - DESIGN SYSTEM "MERAH PUTIH FORMAL"
+   ====================================================================== */
+
+:root {
+    --color-merah: #B0102A;
+    --color-merah-pekat: #6E0A1C;
+    --color-merah-tint: #E7C6CB;
+    --color-putih-tulang: #FAF8F5;
+    --color-putih: #FFFFFF;
+    --color-arang: #1A1717;
+    --color-arang-soft: #4A4544;
+    --color-emas: #B8912F;
+    --font-heading: 'Sora', 'Libre Franklin', sans-serif;
+    --font-body: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    --fs-hero: clamp(2.5rem, 5vw, 4rem);
+    --fs-h1: clamp(2rem, 3.5vw, 2.75rem);
+    --fs-h2: clamp(1.5rem, 2.5vw, 2rem);
+    --fs-body: 1rem;
+    --fs-small: 0.875rem;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --shadow-card: 0 4px 16px rgba(26, 23, 23, 0.08);
+    --shadow-merah: 0 8px 24px rgba(176, 16, 42, 0.25);
+    --sdn-primary: var(--color-merah);
+    --sdn-primary-700: var(--color-merah-pekat);
+    --sdn-text: var(--color-arang);
+    --sdn-muted: var(--color-arang-soft);
+    --sdn-border: var(--color-merah-tint);
+    --sdn-surface: var(--color-putih-tulang);
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-arang);
+    background-color: var(--color-putih-tulang);
+}
+
+h1, h2, h3, h4,
+.site-title,
+.section-title {
+    font-family: var(--font-heading);
+    color: var(--color-arang);
+}
+
+p {
+    color: var(--color-arang-soft);
+}
 /* =========================================================
    RESET
    ========================================================= */
@@ -21,8 +69,8 @@ html {
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    color: #1f2937;
-    background: #ffffff;
+    color: var(--color-arang);
+    background: var(--color-putih);
     line-height: 1.6;
 }
 
@@ -90,7 +138,7 @@ img {
 
 .site-tagline {
     font-size: 12px;
-    color: #6b7280;
+    color: var(--color-arang-soft);
 }
 
 
@@ -113,7 +161,7 @@ img {
 
 .hero-content {
     max-width: 700px;
-    color: #ffffff;
+    color: var(--color-putih);
 }
 
 .hero-label {
@@ -127,7 +175,7 @@ img {
 
 .hero-title {
     margin: 0 0 20px;
-    color: #ffffff;
+    color: var(--color-putih);
     line-height: 1.05;
     font-weight: 800;
 }
@@ -159,12 +207,12 @@ img {
 }
 
 .btn-primary {
-    background: #2563eb;
-    color: #ffffff;
+    background: var(--color-merah);
+    color: var(--color-putih);
 }
 
 .btn-primary:hover {
-    background: #1d4ed8;
+    background: var(--color-merah-pekat);
     transform: translateY(-2px);
 }
 
@@ -184,7 +232,7 @@ img {
 
 .section-label {
     margin-bottom: 8px;
-    color: #2563eb;
+    color: var(--color-merah);
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
@@ -199,7 +247,7 @@ img {
 
 .section-description {
     margin: 0;
-    color: #6b7280;
+    color: var(--color-arang-soft);
 }
 
 /* Contact page styles (moved from page-kontak.php) */
@@ -222,8 +270,8 @@ img {
 }
 
 .contact-page .contact-map-box {
-    background: #f8fafc;
-    border: 1px solid #e5e7eb;
+    background: var(--color-putih-tulang);
+    border: 1px solid var(--color-merah-tint);
     border-radius: 12px;
     padding: 20px;
     min-height: 220px;
@@ -241,7 +289,7 @@ img {
 
 .contact-page .contact-details p {
     margin: 8px 0;
-    color: #334155;
+    color: var(--color-arang-soft);
 }
 
 .contact-page .contact-details strong {
@@ -272,11 +320,11 @@ img {
 
 .post-archive-page,
 .post-single-page {
-    background: #f8fafc;
+    background: var(--color-putih-tulang);
 }
 
 .post-archive-hero {
-    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    background: linear-gradient(135deg, var(--color-putih-tulang) 0%, var(--color-merah-tint) 100%);
 }
 
 .post-archive-grid {
@@ -291,9 +339,9 @@ img {
     width: 100%;
     min-width: 0;
     overflow: hidden;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--color-merah-tint);
     border-radius: 18px;
-    background: #ffffff;
+    background: var(--color-putih);
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
 }
 
@@ -317,17 +365,17 @@ img {
     gap: 8px;
     align-items: center;
     margin-bottom: 12px;
-    color: #475569;
+    color: var(--color-arang-soft);
     font-size: 0.85rem;
     font-weight: 600;
 }
 
 .post-meta-separator {
-    color: #94a3b8;
+    color: var(--color-arang-soft);
 }
 
 .post-category-link {
-    color: #2563eb;
+    color: var(--color-merah);
 }
 
 .post-card-title {
@@ -337,12 +385,12 @@ img {
 }
 
 .post-card-title a {
-    color: #0f172a;
+    color: var(--color-arang);
 }
 
 .post-card-excerpt {
     margin: 0 0 18px;
-    color: #475569;
+    color: var(--color-arang-soft);
     line-height: 1.7;
 }
 
@@ -354,17 +402,17 @@ img {
 .post-empty-state {
     margin: 0;
     padding: 28px;
-    border: 1px dashed #cbd5e1;
+    border: 1px dashed var(--color-merah-tint);
     border-radius: 12px;
-    background: #ffffff;
-    color: #475569;
+    background: var(--color-putih);
+    color: var(--color-arang-soft);
 }
 
 .post-single-article {
     max-width: 900px;
     margin: 0 auto;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
+    background: var(--color-putih);
+    border: 1px solid var(--color-merah-tint);
     border-radius: 22px;
     padding: 36px;
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
@@ -395,7 +443,7 @@ img {
 }
 
 .post-content {
-    color: #1f2937;
+    color: var(--color-arang);
     line-height: 1.9;
     font-size: 1.04rem;
 }
@@ -417,7 +465,7 @@ img {
 }
 
 .post-content a {
-    color: #2563eb;
+    color: var(--color-merah);
     text-decoration: underline;
 }
 
@@ -445,17 +493,17 @@ img {
     min-width: 42px;
     min-height: 42px;
     padding: 0 14px;
-    border: 1px solid #dbeafe;
+    border: 1px solid var(--color-merah-tint);
     border-radius: 999px;
-    background: #ffffff;
-    color: #334155;
+    background: var(--color-putih);
+    color: var(--color-arang-soft);
     font-weight: 600;
 }
 
 .navigation.pagination .current {
-    background: #2563eb;
-    border-color: #2563eb;
-    color: #ffffff;
+    background: var(--color-merah);
+    border-color: var(--color-merah);
+    color: var(--color-putih);
 }
 
 /* =========================================================
@@ -463,7 +511,7 @@ img {
    ========================================================= */
 
 .section-berita {
-    background: #f8fafc;
+    background: var(--color-putih-tulang);
 }
 
 .section-berita .post-archive-grid {
@@ -504,8 +552,8 @@ img {
 
 .site-footer {
     padding: 28px 0 18px;
-    background: #111827;
-    color: #ffffff;
+    background: var(--color-arang);
+    color: var(--color-putih);
 }
 
 .site-footer .footer-grid {
@@ -525,7 +573,7 @@ img {
     margin-top: 18px;
     padding-top: 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
-    color: #9ca3af;
+    color: var(--color-arang-soft);
     font-size: 13px;
 }
 
@@ -546,7 +594,7 @@ img {
 
 .site-footer .footer-contact-item strong {
     font-weight: 600;
-    color: #ffffff;
+    color: var(--color-putih);
 }
 
 .site-footer .footer-social {
@@ -569,7 +617,7 @@ img {
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.04);
-    color: #ffffff;
+    color: var(--color-putih);
     transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -589,13 +637,13 @@ img {
 }
 
 .site-footer a {
-    color: #f8fafc;
+    color: var(--color-putih-tulang);
     text-decoration: none;
 }
 
 .site-footer a:hover,
 .site-footer a:focus {
-    color: #a5b4fc;
+    color: var(--color-merah-tint);
     text-decoration: underline;
 }
 
@@ -612,13 +660,13 @@ img {
 }
 
 .site-footer .footer-grid li a {
-    color: #d1d5db;
+    color: var(--color-arang-soft);
     font-size: 0.95rem;
 }
 
 .site-footer .footer-grid li a:hover,
 .site-footer .footer-grid li a:focus {
-    color: #ffffff;
+    color: var(--color-putih);
 }
 
 
@@ -646,7 +694,7 @@ img {
         display: none;
         width: 100%;
         margin-left: 0;
-        border-top: 1px solid #e5e7eb;
+        border-top: 1px solid var(--color-merah-tint);
         padding-top: 16px;
         position: relative;
         z-index: 20;
@@ -671,7 +719,7 @@ img {
     }
 
     .main-navigation > ul > li + li {
-        border-top: 1px solid #e5e7eb;
+        border-top: 1px solid var(--color-merah-tint);
     }
 
     .main-navigation a {
@@ -712,7 +760,7 @@ img {
         background: transparent;
         padding: 0;
         margin-left: auto;
-        color: #475569;
+        color: var(--color-arang-soft);
         cursor: pointer;
     }
 
@@ -775,12 +823,12 @@ img {
    - Button hover, card hover, image zoom, and navbar underline
 ==================================================== */
 :root {
-    --sdn-primary: #2563eb; /* existing primary */
-    --sdn-primary-700: #1d4ed8; /* existing darker primary */
-    --sdn-text: #1f2937;
-    --sdn-muted: #6b7280;
-    --sdn-border: #e5e7eb;
-    --sdn-surface: #f8fafc;
+    --sdn-primary: var(--color-merah); /* existing primary */
+    --sdn-primary-700: var(--color-merah-pekat); /* existing darker primary */
+    --sdn-text: var(--color-arang);
+    --sdn-muted: var(--color-arang-soft);
+    --sdn-border: var(--color-merah-tint);
+    --sdn-surface: var(--color-putih-tulang);
     --sdn-transition: 200ms ease;
     --sdn-radius: 10px;
     --sdn-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 10px rgba(15,23,42,0.03);
@@ -795,7 +843,7 @@ img {
 
 .btn-primary {
     background: var(--sdn-primary);
-    color: #ffffff;
+    color: var(--color-putih);
     box-shadow: var(--sdn-shadow);
 }
 
@@ -956,7 +1004,7 @@ img {
 
     white-space: nowrap;
 
-    color: #172033;
+    color: var(--color-arang);
 }
 
 
@@ -970,7 +1018,7 @@ img {
 
     white-space: nowrap;
 
-    color: #64748b;
+    color: var(--color-arang-soft);
 }
 
 
@@ -1013,7 +1061,7 @@ img {
 .main-navigation a {
     display: block;
     padding: 14px 0;
-    color: #172033;
+    color: var(--color-arang);
     font-size: 0.95rem;
     font-weight: 600;
     text-decoration: none;
@@ -1022,14 +1070,14 @@ img {
 
 .main-navigation a:hover,
 .main-navigation a:focus {
-    color: #1d4ed8;
+    color: var(--color-merah-pekat);
 }
 
 .main-navigation .current-menu-item > a,
 .main-navigation .current_page_item > a,
 .main-navigation .current-menu-ancestor > a,
 .main-navigation .current_page_ancestor > a {
-    color: #1d4ed8;
+    color: var(--color-merah-pekat);
 }
 
 .main-navigation .current-menu-item > a::after,
@@ -1042,7 +1090,7 @@ img {
     right: 0;
     bottom: -6px;
     height: 2px;
-    background: #2563eb;
+    background: var(--color-merah);
     border-radius: 2px;
 }
 
@@ -1066,8 +1114,8 @@ img {
     left: 0;
     min-width: 220px;
     padding: 10px 0;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
+    background: var(--color-putih);
+    border: 1px solid var(--color-merah-tint);
     border-radius: 14px;
     box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08);
     z-index: 20;
@@ -1084,14 +1132,14 @@ img {
 
 .main-navigation .sub-menu a {
     padding: 10px 18px;
-    color: #172033;
+    color: var(--color-arang);
     white-space: nowrap;
 }
 
 .main-navigation .sub-menu a:hover,
 .main-navigation .sub-menu a:focus {
-    background: #f8fafc;
-    color: #1d4ed8;
+    background: var(--color-putih-tulang);
+    color: var(--color-merah-pekat);
 }
 
 .nav-toggle {
@@ -1106,7 +1154,7 @@ img {
 
 .nav-toggle:focus-visible,
 .menu-item-has-children .submenu-toggle:focus-visible {
-    outline: 2px solid #2563eb;
+    outline: 2px solid var(--color-merah);
     outline-offset: 3px;
 }
 
@@ -1114,7 +1162,7 @@ img {
     display: block;
     width: 22px;
     height: 2px;
-    background: #172033;
+    background: var(--color-arang);
     border-radius: 1px;
     transition: transform 0.2s ease, opacity 0.2s ease;
 }
@@ -1208,7 +1256,7 @@ img {
 
     margin-bottom: 16px;
 
-    color: #ffffff;
+    color: var(--color-putih);
 
     font-size: 0.9rem;
     font-weight: 700;
@@ -1221,7 +1269,7 @@ img {
 .hero-title {
     margin: 0 0 20px;
 
-    color: #ffffff;
+    color: var(--color-putih);
 
     line-height: 1.05;
     font-weight: 800;
@@ -1259,7 +1307,7 @@ img {
 
 .section-guru {
     padding: 90px 0;
-    background: #f8fafc;
+    background: var(--color-putih-tulang);
 }
 
 
@@ -1382,8 +1430,8 @@ body.page-id-49 .section-header .section-description {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
+    background: var(--color-putih);
+    border: 1px solid var(--color-merah-tint);
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
@@ -1397,7 +1445,7 @@ body.page-id-49 .section-header .section-description {
 
 .section-guru .sdn-guru-card:hover {
     transform: translateY(-6px);
-    border-color: #2563eb;
+    border-color: var(--color-merah);
     box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
 }
 
@@ -1407,7 +1455,7 @@ body.page-id-49 .section-header .section-description {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: #f8fafc;
+    background: var(--color-putih-tulang);
     padding: 12px;
 }
 
@@ -1429,7 +1477,7 @@ body.page-id-49 .section-header .section-description {
 }
 
 .section-guru .sdn-guru-card:hover h3 {
-    color: #2563eb;
+    color: var(--color-merah);
 }
 
 
@@ -1442,7 +1490,7 @@ body.page-id-49 .section-header .section-description {
 
 .section-guru .sdn-guru-content h3 {
     margin: 0 0 6px;
-    color: #172033;
+    color: var(--color-arang);
     font-size: 1rem; /* ~16px */
     font-weight: 700;
     line-height: 1.3;
@@ -1450,22 +1498,22 @@ body.page-id-49 .section-header .section-description {
 
 .section-guru .sdn-guru-content p {
     margin: 4px 0;
-    color: #64748b;
+    color: var(--color-arang-soft);
     font-size: 0.875rem; /* ~14px */
     line-height: 1.3;
 }
 
 .section-guru .sdn-guru-content strong {
-    color: #334155;
+    color: var(--color-arang-soft);
 }
 
 .section-guru .guru-card-link {
-    color: #172033;
+    color: var(--color-arang);
     text-decoration: none;
 }
 
 .section-guru .guru-card-link:hover {
-    color: #2563eb;
+    color: var(--color-merah);
 }
 
 /* Archive page grid fixes */
@@ -1502,7 +1550,7 @@ body.page-profil-sekolah .section-header .section-description {
    max-width: 760px;
    margin-left: auto;
    margin-right: auto;
-   color: #6b7280;
+   color: var(--color-arang-soft);
 }
 
 .section-profile-about .profile-image {
@@ -1520,7 +1568,7 @@ body.page-profil-sekolah .section-header .section-description {
 .section-profile-about .profile-sejarah {
    max-width: 760px;
    margin: 18px auto 0;
-   color: #475569;
+   color: var(--color-arang-soft);
    line-height: 1.8;
    text-align: left;
 }
@@ -1565,7 +1613,7 @@ body.page-profil-sekolah .section-header {
    aspect-ratio: 4 / 3;
    overflow: hidden;
    border-radius: 16px;
-   background: #f8fafc;
+   background: var(--color-putih-tulang);
    box-shadow: 0 10px 24px rgba(15,23,42,0.06);
 }
 
@@ -1581,17 +1629,17 @@ body.page-profil-sekolah .section-header {
    font-size: clamp(1.6rem, 2.5vw, 2rem);
    line-height: 1.12;
    font-weight: 800;
-   color: #172033;
+   color: var(--color-arang);
 }
 
 .profile-intro {
    margin: 0 0 14px;
-   color: #334155;
+   color: var(--color-arang-soft);
    line-height: 1.7;
 }
 
 .profile-sejarah-extended {
-   color: #64748b;
+   color: var(--color-arang-soft);
    line-height: 1.8;
 }
 
@@ -1628,7 +1676,7 @@ body.page-profil-sekolah .section-header {
 }
 
 .vm-card {
-   background: #ffffff;
+   background: var(--color-putih);
    border-radius: 12px;
    padding: 20px;
    border: 1px solid rgba(148,163,184,0.08);
@@ -1638,12 +1686,12 @@ body.page-profil-sekolah .section-header {
 .vm-card h3 {
    margin: 0 0 8px;
    font-size: 1.1rem;
-   color: #172033;
+   color: var(--color-arang);
    font-weight: 800;
 }
 
 .vm-card .vm-content {
-   color: #475569;
+   color: var(--color-arang-soft);
    line-height: 1.7;
 }
 
@@ -1665,14 +1713,14 @@ body.page-profil-sekolah .school-identity .identity-grid {
    display: grid;
    gap: 16px;
    padding: 14px;
-   background: #f8fafc;
+   background: var(--color-putih-tulang);
    border: 1px solid rgba(148, 163, 184, 0.25);
    border-radius: 18px;
    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 body.page-profil-sekolah .school-identity .identity-item {
-   background: #ffffff;
+   background: var(--color-putih);
    padding: 14px 16px;
    border-radius: 12px;
    border: 1px solid rgba(148, 163, 184, 0.12);
@@ -1680,15 +1728,15 @@ body.page-profil-sekolah .school-identity .identity-item {
 
 body.page-profil-sekolah .identity-key {
    font-weight: 700;
-   color: #374151;
+   color: var(--color-arang-soft);
    text-transform: none;
 }
 
 body.page-profil-sekolah .identity-value {
    margin-top: 6px;
-   color: #64748b;
+   color: var(--color-arang-soft);
 
-   color: #111827;
+   color: var(--color-arang);
    font-size: 1rem;
    font-weight: 600;
    line-height: 1.6;
@@ -1696,7 +1744,7 @@ body.page-profil-sekolah .identity-value {
 }
 
 body.page-profil-sekolah .identity-value a {
-   color: #1d4ed8;
+   color: var(--color-merah-pekat);
 }
 
 body.page-profil-sekolah .school-identity {
@@ -1708,7 +1756,7 @@ body.page-profil-sekolah .school-mission {
    max-width: 760px;
    margin-left: auto;
    margin-right: auto;
-   color: #374151;
+   color: var(--color-arang-soft);
    line-height: 1.8;
 }
 
@@ -1817,8 +1865,8 @@ body.page-profil-sekolah .section + .section {
     align-items: center;
     justify-content: center;
 
-    background: #e2e8f0;
-    color: #64748b;
+    background: var(--color-merah-tint);
+    color: var(--color-arang-soft);
 
     font-size: 0.95rem;
     font-weight: 600;
@@ -1841,8 +1889,8 @@ body.page-profil-sekolah .section + .section {
     grid-template-columns: 100px minmax(0, 1fr);
     gap: 24px;
     padding: 24px;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
+    background: var(--color-putih);
+    border: 1px solid var(--color-merah-tint);
     border-radius: 18px;
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
 }
@@ -1851,7 +1899,7 @@ body.page-profil-sekolah .section + .section {
     display: grid;
     align-items: center;
     justify-items: center;
-    background: #eef2ff;
+    background: var(--color-putih-tulang);
     border-radius: 16px;
     padding: 16px 12px;
 }
@@ -1861,14 +1909,14 @@ body.page-profil-sekolah .section + .section {
     font-size: 2.6rem;
     font-weight: 700;
     line-height: 1;
-    color: #111827;
+    color: var(--color-arang);
 }
 
 .section-agenda .sdn-agenda-month {
     display: block;
     font-size: 1rem;
     font-weight: 700;
-    color: #2563eb;
+    color: var(--color-merah);
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
@@ -1882,12 +1930,12 @@ body.page-profil-sekolah .section + .section {
 
 .section-agenda .sdn-agenda-content p {
     margin: 10px 0;
-    color: #475569;
+    color: var(--color-arang-soft);
 }
 
 .section-agenda .sdn-agenda-description {
     margin-top: 18px;
-    color: #475569;
+    color: var(--color-arang-soft);
     line-height: 1.75;
 }
 
@@ -1912,7 +1960,7 @@ body.page-profil-sekolah .section + .section {
 
     overflow: hidden;
 
-    background: #e2e8f0;
+    background: var(--color-merah-tint);
     border-radius: 18px;
 }
 
@@ -1933,7 +1981,7 @@ body.page-profil-sekolah .section + .section {
     align-items: center;
     justify-content: center;
 
-    color: #64748b;
+    color: var(--color-arang-soft);
     font-weight: 600;
 }
 
@@ -1958,7 +2006,7 @@ body.page-profil-sekolah .section + .section {
     max-width: 100%;
     border-radius: 18px;
     overflow: hidden;
-    background: #e2e8f0;
+    background: var(--color-merah-tint);
     box-shadow: 0 6px 18px rgba(15,23,42,0.06);
 }
 
@@ -1979,7 +2027,7 @@ body.page-profil-sekolah .section + .section {
 .guru-detail-content h1 {
     margin: 10px 0 8px;
 
-    color: #172033;
+    color: var(--color-arang);
 
     font-size: clamp(2rem, 4vw, 3rem);
     line-height: 1.2;
@@ -1988,7 +2036,7 @@ body.page-profil-sekolah .section + .section {
 .guru-detail-position {
     margin: 0 0 30px;
 
-    color: #2563eb;
+    color: var(--color-merah);
 
     font-size: 1.1rem;
     font-weight: 600;
@@ -2000,7 +2048,7 @@ body.page-profil-sekolah .section + .section {
 .guru-detail-info {
     margin-bottom: 35px;
 
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid var(--color-merah-tint);
 }
 
 .guru-info-row {
@@ -2011,15 +2059,15 @@ body.page-profil-sekolah .section + .section {
 
     padding: 15px 0;
 
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--color-merah-tint);
 }
 
 .guru-info-row strong {
-    color: #334155;
+    color: var(--color-arang-soft);
 }
 
 .guru-info-row span {
-    color: #64748b;
+    color: var(--color-arang-soft);
 }
 
 
@@ -2032,11 +2080,11 @@ body.page-profil-sekolah .section + .section {
 .guru-detail-description h2 {
     margin-bottom: 15px;
 
-    color: #172033;
+    color: var(--color-arang);
 }
 
 .guru-detail-description p {
-    color: #64748b;
+    color: var(--color-arang-soft);
     line-height: 1.8;
 }
 
@@ -2080,7 +2128,7 @@ body.page-profil-sekolah .section + .section {
 ===================================================== */
 
 .section-fasilitas {
-    background: #ffffff;
+    background: var(--color-putih);
 }
 
 /* Archive-specific grid: use auto-fit so cards stay centered even with few items */
@@ -2108,7 +2156,7 @@ body.page-profil-sekolah .section + .section {
     border: 1px solid rgba(15, 23, 42, 0.04);
     border-radius: 10px;
     overflow: hidden;
-    background: #fff;
+    background: var(--color-putih);
 }
 
 /* Archive-only image sizing (does not affect single layout) */
@@ -2124,8 +2172,8 @@ body.page-profil-sekolah .section + .section {
     align-items: center;
     justify-content: center;
     min-height: 220px;
-    background: #f8fafc;
-    color: #64748b;
+    background: var(--color-putih-tulang);
+    color: var(--color-arang-soft);
     font-weight: 700;
     text-align: center;
     padding: 20px;
@@ -2148,7 +2196,7 @@ body.page-profil-sekolah .section + .section {
 .fasilitas-archive-page .sdn-fasilitas-description,
 .section-fasilitas .sdn-fasilitas-description {
     margin: 0;
-    color: #475569;
+    color: var(--color-arang-soft);
     line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -2174,7 +2222,7 @@ body.page-profil-sekolah .section + .section {
 .fasilitas-archive-page .sdn-fasilitas-card:hover,
 .section-fasilitas .sdn-fasilitas-card:hover {
     transform: translateY(-4px);
-    border-color: #2563eb;
+    border-color: var(--color-merah);
     box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
 }
 
@@ -2195,7 +2243,7 @@ body.page-profil-sekolah .section + .section {
 }
 
 .section-fasilitas .sdn-fasilitas-card:hover h3 {
-    color: #2563eb;
+    color: var(--color-merah);
 }
 
 .section-fasilitas .sdn-fasilitas-grid {
@@ -2210,6 +2258,40 @@ body.page-profil-sekolah .section + .section {
 
 .section-fasilitas .sdn-fasilitas-content {
     flex: 1;
+}
+
+/* =========================================
+   LAYOUT SINGLE FASILITAS & EKSKUL (BARU)
+========================================= */
+.sdn-single-layout {
+    display: flex;
+    gap: 40px; 
+    align-items: flex-start;
+}
+
+.sdn-single-image {
+    flex: 0 0 45%; 
+}
+
+.sdn-single-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px; 
+    object-fit: cover;
+}
+
+.sdn-single-info {
+    flex: 1; 
+}
+
+@media (max-width: 768px) {
+    .sdn-single-layout {
+        flex-direction: column;
+    }
+    .sdn-single-image {
+        flex: 0 0 100%;
+        width: 100%;
+    }
 }
 
 /* =====================================================
@@ -2280,7 +2362,7 @@ body.page-profil-sekolah .section + .section {
 .section-ekstrakurikuler .sdn-ekstrakurikuler-card {
     display: flex;
     flex-direction: column;
-    background: #fff;
+    background: var(--color-putih);
     border-radius: 10px;
     overflow: hidden;
     border: 1px solid rgba(15,23,42,0.04);
@@ -2309,8 +2391,8 @@ body.home .section-ekstrakurikuler .sdn-ekstrakurikuler-photo img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f8fafc;
-    color: #64748b;
+    background: var(--color-putih-tulang);
+    color: var(--color-arang-soft);
     font-weight: 700;
     text-align: center;
     padding: 12px;
@@ -2336,7 +2418,7 @@ body.home .section-ekstrakurikuler .sdn-ekstrakurikuler-card h3 {
 .section-ekstrakurikuler .sdn-ekstrakurikuler-content p,
 body.home .section-ekstrakurikuler .sdn-ekstrakurikuler-content p {
     margin: 4px 0;
-    color: #6b7280;
+    color: var(--color-arang-soft);
     font-size: 0.95rem;
 }
 
@@ -2353,7 +2435,7 @@ body.home .section-ekstrakurikuler .sdn-ekstrakurikuler-description,
 body.home .section-ekstrakurikuler .sdn-ekstrakurikuler-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 28px rgba(15,23,42,0.08);
-    border-color: #2563eb;
+    border-color: var(--color-merah);
 }
 
 /* Ensure single page layout not affected by archive card sizing */
@@ -2496,7 +2578,7 @@ body.home .section-berita .post-card {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    background: #ffffff;
+    background: var(--color-putih);
     border-radius: 12px;
     padding: 12px;
     gap: 8px;
@@ -2515,7 +2597,7 @@ body.home .section-berita .post-card {
     max-height: 150px;
     overflow: hidden;
     border-radius: 10px;
-    background: #f1f5f9;
+    background: var(--color-putih-tulang);
     display: block;
 }
 
@@ -2531,7 +2613,7 @@ body.home .section-berita .post-card {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #64748b;
+    color: var(--color-arang-soft);
     font-weight: 600;
     height: 100%;
 }
@@ -2540,19 +2622,19 @@ body.home .section-berita .post-card {
     margin: 0 0 6px 0;
     font-size: 1rem; /* ~16px */
     line-height: 1.2;
-    color: #0f172a;
+    color: var(--color-arang);
 }
 
 .ekstrakurikuler-archive-page .sdn-ekstrakurikuler-content p {
     margin: 3px 0;
     font-size: 0.85rem; /* 13.6px */
-    color: #475569;
+    color: var(--color-arang-soft);
     line-height: 1.35;
 }
 
 .ekstrakurikuler-archive-page .sdn-ekstrakurikuler-description {
     margin-top: 6px;
-    color: #64748b;
+    color: var(--color-arang-soft);
     font-size: 0.875rem;
 }
 
@@ -2574,7 +2656,7 @@ body.home .section-berita .post-card {
     visibility: visible !important;
     height: auto !important;
     margin-top: 18px;
-    color: #64748b;
+    color: var(--color-arang-soft);
     line-height: 1.8;
     font-size: 0.95rem;
 }
@@ -2599,7 +2681,7 @@ body.home .section-berita .post-card {
     aspect-ratio: 3 / 4;
     overflow: hidden;
     border-radius: 14px;
-    background: #f1f5f9;
+    background: var(--color-putih-tulang);
 }
 
 .ekstrakurikuler-single-page .sdn-ekstrakurikuler-single-photo img {
@@ -2617,7 +2699,7 @@ body.home .section-berita .post-card {
 .ekstrakurikuler-single-page .sdn-ekstrakurikuler-meta p {
     margin: 6px 0;
     font-size: 0.95rem;
-    color: #475569;
+    color: var(--color-arang-soft);
 }
 
 /* Stacked meta layout for Ekstrakurikuler cards and single pages */
@@ -2639,7 +2721,7 @@ body.home .section-berita .post-card {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--color-arang-soft);
     margin-bottom: 2px;
     display: block;
 }
@@ -2647,7 +2729,7 @@ body.home .section-berita .post-card {
 .sdn-ekstrakurikuler-meta-value {
     font-size: 0.9rem;
     font-weight: 600;
-    color: #1f2937;
+    color: var(--color-arang);
     line-height: 1.35;
     display: block;
 }
@@ -2701,8 +2783,8 @@ body.home .section-berita .post-card {
 
 /* Guru placeholder: clean neutral block with simple avatar icon (archive-only) */
 .section-guru .sdn-guru-no-photo {
-    background: #f1f5f9 !important;
-    color: #475569 !important;
+    background: var(--color-putih-tulang) !important;
+    color: var(--color-arang-soft) !important;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -2813,7 +2895,7 @@ body.home .section-berita .post-card {
         height: 100dvh;
         margin: 0;
         padding: 24px 24px 32px;
-        background: #ffffff;
+        background: var(--color-putih);
         border-top: none;
         box-shadow: 12px 0 32px rgba(15, 23, 42, 0.12);
         transform: translateX(-100%);
@@ -2835,17 +2917,17 @@ body.home .section-berita .post-card {
         height: 36px;
         margin: 0 auto 20px 0;
         border: none;
-        background: #f1f5f9;
+        background: var(--color-putih-tulang);
         border-radius: 999px;
         font-size: 22px;
         line-height: 1;
-        color: #172033;
+        color: var(--color-arang);
         cursor: pointer;
     }
 
     .nav-drawer-close:hover,
     .nav-drawer-close:focus-visible {
-        background: #e2e8f0;
+        background: var(--color-merah-tint);
     }
 
     body.nav-open {
@@ -2914,45 +2996,82 @@ body.home .section-berita .post-card {
 }
 
 .section-statistik {
-    padding: 50px 0;
-    background: var(--sdn-surface, #f8fafc);
-    border-bottom: 1px solid var(--sdn-border, #e5e7eb);
+  position: relative;
+  padding: 80px 0;
+  background-image: none !important;
+  background-color: var(--color-arang);
+  overflow: hidden;
+}
+
+.section-statistik-overlay {
+  display: none;
+}
+
+.section-statistik .container {
+  position: relative;
+  z-index: 2;
 }
 
 .sdn-statistik-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 24px;
+   display: grid;
+   grid-template-columns: repeat(4, minmax(0, 1fr));
+   gap: 32px;
 }
 
 .sdn-statistik-item {
-    text-align: center;
+   text-align: center;
+}
+
+.sdn-statistik-icon {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   width: 64px;
+   height: 64px;
+   margin-bottom: 18px;
+   border-radius: 18px;
+   background: var(--sdn-primary, var(--color-merah));
+   color: var(--color-putih);
+}
+
+.sdn-statistik-icon svg {
+   width: 30px;
+   height: 30px;
 }
 
 .sdn-statistik-number {
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    font-weight: 800;
-    color: var(--sdn-primary, #2563eb);
-    line-height: 1.1;
+   font-size: clamp(2.2rem, 4vw, 3rem);
+   font-weight: 800;
+   color: var(--color-putih);
+   line-height: 1.1;
 }
 
 .sdn-statistik-text {
-    font-size: clamp(1.75rem, 3vw, 2.25rem);
+   font-size: clamp(1.75rem, 3vw, 2.25rem);
 }
 
 .sdn-statistik-label {
-    margin-top: 6px;
-    font-size: 0.9rem;
-    color: #6b7280;
-    font-weight: 600;
+   margin-top: 8px;
+   font-size: 0.85rem;
+   color: rgba(255, 255, 255, 0.75);
+   font-weight: 700;
+   text-transform: uppercase;
+   letter-spacing: 0.06em;
 }
 
-@media (max-width: 768px) {
-    .sdn-statistik-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 28px 20px;
-    }
+@media (max-width: 900px) {
+   .sdn-statistik-grid {
+       grid-template-columns: repeat(2, minmax(0, 1fr));
+       gap: 40px 24px;
+   }
 }
+
+@media (max-width: 500px) {
+   .section-statistik {
+       padding: 56px 0;
+   }
+}
+
 
 /* =====================================================
    PROFIL SEKOLAH - two-column layout (photo left, text right)
@@ -2980,7 +3099,7 @@ body.home .section-berita .post-card {
     aspect-ratio: 4 / 3;
     overflow: hidden;
     border-radius: 12px;
-    background: #f8fafc;
+    background: var(--color-putih-tulang);
     box-shadow: var(--sdn-shadow, 0 1px 4px rgba(15,23,42,0.06));
 }
 
@@ -2994,7 +3113,7 @@ body.home .section-berita .post-card {
 .sdn-profile-no-photo {
     width: 100%;
     height: 100%;
-    background: #f1f5f9;
+    background: var(--color-putih-tulang);
 }
 
 .sdn-profile-content {
@@ -3005,12 +3124,12 @@ body.home .section-berita .post-card {
     margin: 0 0 12px;
     font-size: clamp(1.5rem, 2.6vw, 1.85rem);
     line-height: 1.15;
-    color: #172033;
+    color: var(--color-arang);
     font-weight: 800;
 }
 
 .sdn-profile-text {
-    color: #64748b;
+    color: var(--color-arang-soft);
     line-height: 1.8;
     font-size: 1rem;
     max-width: 100%;
@@ -3028,4 +3147,304 @@ body.home .section-berita .post-card {
     .sdn-profile-content {
         padding-top: 12px;
     }
+}
+
+/* Slide-in reveal for profile section on homepage */
+.sdn-slide-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.sdn-slide-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.sdn-slide-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.sdn-slide-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sdn-slide-left,
+    .sdn-slide-right {
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+}
+
+/* ======================================================================
+   FORMAL RED-WHITE COMPONENT LAYER
+   ====================================================================== */
+
+/* ======================================================================
+   FORMAL RED-WHITE BASE OVERRIDES
+   ====================================================================== */
+body { font-family: var(--font-body); color: var(--color-arang); background-color: var(--color-putih-tulang); }
+h1, h2, h3, h4, h5, h6, .site-title, .section-title { font-family: var(--font-heading); color: var(--color-arang); }
+p { color: var(--color-arang-soft); }
+.section-label { color: var(--color-merah); }
+.section-description { color: var(--color-arang-soft); }
+/* Final flat red-white header. */
+.site-header {
+  display: flex;
+  align-items: stretch;
+  min-height: 88px;
+  background-color: var(--color-merah);
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.site-header .header-inner {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: none;
+  min-height: 88px;
+  margin: 0;
+  padding: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 40px 0 24px;
+  margin: 0;
+  background-color: var(--color-putih);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-right: 4px solid var(--color-emas);
+}
+
+.header-left .site-logo,
+.header-left .site-title,
+.header-left .site-tagline,
+.header-left .site-logo * {
+  color: var(--color-arang) !important;
+}
+
+.header-left .site-logo {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 32px;
+  padding: 0 32px;
+  margin: 0;
+  background-color: var(--color-merah);
+  border: none;
+}
+
+.header-right .main-navigation {
+  margin: 0;
+}
+
+.header-right .main-navigation a {
+  color: var(--color-putih);
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+.header-right .main-navigation a:hover,
+.header-right .main-navigation .current-menu-item > a {
+  color: var(--color-emas);
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    flex-direction: column;
+  }
+
+  .site-header .header-inner {
+    flex-direction: column;
+  }
+
+  .header-left {
+    border-right: none;
+    border-bottom: 4px solid var(--color-emas);
+    padding: 16px 24px;
+    width: 100%;
+  }
+
+  .header-right {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 16px 24px;
+  }
+}
+
+/* =========================================
+   PERBAIKAN CAROUSEL GURU SDN CILOPANG (v2)
+========================================= */
+
+/* 1. Ruang untuk panah — sudah oke, tetap dipakai */
+.guru-carousel {
+    padding: 10px 60px 50px 60px !important;
+}
+
+/* 2. Panah jadi tombol lingkaran berdiri sendiri, bukan cuma ikon scaled */
+.guru-carousel .swiper-button-prev,
+.guru-carousel .swiper-button-next {
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 4px 14px rgba(26, 23, 23, 0.15);
+    color: #b91c1c;
+    transform: none; /* buang scale, ukuran diatur lewat width/height */
+    margin-top: -20px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.guru-carousel .swiper-button-prev::after,
+.guru-carousel .swiper-button-next::after {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.guru-carousel .swiper-button-prev:hover,
+.guru-carousel .swiper-button-next:hover {
+    background-color: #b91c1c;
+    color: #ffffff;
+}
+
+.guru-carousel .swiper-button-prev { left: 8px; }
+.guru-carousel .swiper-button-next { right: 8px; }
+
+/* 3. Tinggi kartu tetap sejajar */
+.sdn-guru-card {
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+    overflow: hidden;
+    border-top: 3px solid #b91c1c;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(26, 23, 23, 0.08);
+}
+
+.sdn-guru-card.kepala-sekolah {
+    border-top-color: #B8912F;
+}
+
+/* 4. Area foto DIPERKECIL drastis — ini kunci biar gak gemuk */
+.sdn-guru-photo {
+    width: 100%;
+    height: 150px; /* turun dari 250px */
+    background-color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* 5. Kalau ADA foto, tetap cover penuh area 150px */
+.sdn-guru-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+/* 6. Placeholder jadi avatar bulat kecil, bukan ikon besar + teks panjang */
+.sdn-guru-no-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #FBE0E3;
+    color: #b91c1c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: inherit;
+}
+
+/* Sembunyikan teks "Tidak ada foto" & ikon lama, ganti dengan inisial via PHP */
+.sdn-guru-no-photo .placeholder-icon,
+.sdn-guru-no-photo .placeholder-text {
+    display: none;
+}
+
+/* =========================================
+   PERBAIKAN SIDEBAR & WARNA MENU MOBILE
+========================================= */
+
+/* 1. Mencegah header memotong sidebar yang keluar batas */
+.site-header {
+    overflow: visible !important; 
+}
+
+/* Aturan khusus untuk layar HP */
+@media (max-width: 768px) {
+    
+    /* 2. Mengubah wadah menu menjadi sidebar penuh dari kiri */
+    .main-navigation {
+        position: fixed !important; 
+        top: 0;
+        left: 0; 
+        width: 280px; 
+        height: 100vh !important; /* Full 1 layar penuh */
+        background-color: #ffffff; 
+        z-index: 99999 !important; /* Paling depan */
+        overflow-y: auto; 
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15); 
+    }
+
+    /* 3. Memperbaiki warna teks yang sebelumnya putih (gaib) */
+    .main-navigation a {
+        color: #172033 !important; /* Warna gelap */
+        font-weight: 600;
+        display: block;
+        padding: 10px 0; /* Biar ada jarak antar menu */
+    }
+
+    /* 4. Efek sentuh pada menu mobile */
+    .main-navigation a:hover {
+        color: #b91c1c !important; /* Merah SDN Cilopang */
+    }
+}
+
+/* =========================================
+   SOLUSI FINAL: BUG HEADER PROFIL MENYUSUT
+========================================= */
+
+/* Memaksa header-inner tetap 100% dan mengalahkan aturan .container di halaman profil */
+body.page-profil-sekolah .site-header .header-inner {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+}
+
+/* =========================================
+   PERBAIKAN TINGGI KARTU VISI & MISI
+========================================= */
+
+.vm-grid {
+    align-items: stretch !important; /* Memaksa kotak dalam grid memiliki tinggi yang sejajar */
+}
+
+.vm-card {
+    height: 100%; /* Memastikan kartu benar-benar mengisi seluruh ruang kosong */
 }

@@ -522,8 +522,7 @@ function sdn_cilopang_unified_admin_styles($hook)
             }
         }
         #sdn_guru_data,
-        #sdn_agenda_data,
-        #sdn_ekstrakurikuler_data {
+        #sdn_agenda_data {
             display: none !important;
         }
         #titlediv .inside {
@@ -861,70 +860,68 @@ function sdn_cilopang_daftar_guru()
     ob_start();
     ?>
 
-    <div class="sdn-guru-grid">
+    <!-- 1. BUNGKUS UTAMA SWIPER MENGGANTIKAN GRID LAMA -->
+    <div class="swiper guru-carousel">
+        <div class="swiper-wrapper">
 
-        <?php while ($query->have_posts()) : $query->the_post(); ?>
+            <?php while ($query->have_posts()) : $query->the_post(); ?>
 
-            <?php
-            $nip = get_post_meta(get_the_ID(), '_sdn_nip', true);
-            $nuptk = get_post_meta(get_the_ID(), '_sdn_nuptk', true);
-            $jabatan = get_post_meta(get_the_ID(), '_sdn_jabatan', true);
-            $mapel = get_post_meta(get_the_ID(), '_sdn_mapel', true);
-            $status = get_post_meta(get_the_ID(), '_sdn_status', true);
-            ?>
+                <?php
+                $nip = get_post_meta(get_the_ID(), '_sdn_nip', true);
+                $nuptk = get_post_meta(get_the_ID(), '_sdn_nuptk', true);
+                $jabatan = get_post_meta(get_the_ID(), '_sdn_jabatan', true);
+                $mapel = get_post_meta(get_the_ID(), '_sdn_mapel', true);
+                $status = get_post_meta(get_the_ID(), '_sdn_status', true);
+                ?>
 
-          <a
-    href="<?php echo esc_url(get_permalink()); ?>"
-    class="sdn-guru-card"
->
+                <!-- 2. SETIAP KARTU HARUS DIBUNGKUS SWIPER-SLIDE -->
+                <div class="swiper-slide">
+                    <a href="<?php echo esc_url(get_permalink()); ?>" class="card sdn-guru-card">
 
-    <div class="sdn-guru-photo">
-        <?php
-        if (has_post_thumbnail()) {
-            the_post_thumbnail('medium');
-        } else {
-            echo '<div class="sdn-guru-no-photo">Tidak ada foto</div>';
-        }
-        ?>
-    </div>
+                        <div class="sdn-guru-photo">
+                            <?php
+                            if (has_post_thumbnail()) {
+                                the_post_thumbnail('medium');
+                            } else {
+                                echo '<div class="sdn-guru-no-photo">Tidak ada foto</div>';
+                            }
+                            ?>
+                        </div>
 
-    <div class="sdn-guru-content">
+                        <div class="sdn-guru-content">
+                            <h3><?php the_title(); ?></h3>
 
-        <h3>
-            <?php the_title(); ?>
-        </h3>
+                            <?php if ($jabatan) : ?>
+                                <p><?php echo esc_html($jabatan); ?></p>
+                            <?php endif; ?>
 
-        <?php if ($jabatan) : ?>
-            <p>
-                <?php echo esc_html($jabatan); ?>
-            </p>
-        <?php endif; ?>
+                            <?php if ($mapel) : ?>
+                                <p><?php echo esc_html($mapel); ?></p>
+                            <?php endif; ?>
+                        </div>
 
-        <?php if ($mapel) : ?>
-            <p>
-                <?php echo esc_html($mapel); ?>
-            </p>
-        <?php endif; ?>
+                    </a>
+                </div>
 
-    </div>
+            <?php endwhile; ?>
 
-</a>
+        </div> <!-- Penutup swiper-wrapper -->
 
-        <?php endwhile; ?>
+        <!-- 3. NAVIGASI BAWAH SWIPER -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
 
-    </div>
+    </div> <!-- Penutup swiper guru-carousel -->
 
     <?php
 
     wp_reset_postdata();
 
     return ob_get_clean();
-}
+}   
 
-add_shortcode(
-    'sdn_daftar_guru',
-    'sdn_cilopang_daftar_guru'
-);
+add_shortcode('sdn_daftar_guru', 'sdn_cilopang_daftar_guru');
 
 
 /**
